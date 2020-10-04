@@ -1,3 +1,119 @@
-// Place all the styles related to the books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  background-image: url("/assets/images/Melamine-wood-005.png");
+  background-size: cover;
+  background-color:rgba(255,255,255,0.3);
+  background-blend-mode:lighten;
+  height: 100vh
+}
+
+header {
+  height: 100px;
+}
+
+.header-container {
+  width: 80%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+.app-name {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.header-contents{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sign-btns{
+  list-style: none;
+  display: flex;
+}
+
+.sign-up-btn{
+  margin-right: 10px;
+}
+
+.main-container{
+  display: flex;
+  height: calc(100vh - 100px);
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.user-contents{
+  width: 300px;
+  background-color: bisque;
+}
+
+.main-contents{
+  width: calc(1040px - 300px);
+  background-image: url("/assets/images/notebook.png");
+}
+
+.output-wrapper{
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+}
+
+.output-info-container{
+  padding: 10px;
+}
+
+.output-info-container h2{
+  text-align: center;
+  font-size: 28px;
+}
+
+.output-contents{
+  margin-bottom: 10px;
+}
+
+.output-contents:first-child{
+  margin-top: 15px;
+}
+
+.output-contents input[type="text"]{
+  width: 300px;
+}
+
+.output-contents select{
+  width: 150px;
+}
+
+.output-labels{
+  display: inline-block;
+  width: 100px;
+  padding: 0 30px 0 0;
+}
+
+
+.output-texts{
+  display: flex;
+}
+
+.output-textarea{
+  height: 250px;
+  width: 500px;
+}
+
+.output-submit{
+  text-align: center;
+}
+
+.output-submit-btn{
+  width: 200px;
+  letter-spacing: 3px;
+  font-size: 18px;
+}
+
+.radio{
+  padding-right: 20px;
+}
