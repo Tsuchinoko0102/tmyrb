@@ -1,1 +1,35 @@
-<h1>トップページ</h1>
+<%= render partial: "header"%>
+<main>
+  <div class="main-container">
+    <div class="user-contents">
+      <h2>ユーザー情報</h2>
+      <div class="user-field">
+        <img src="assets/images/izumin-sample.jpg" width="150" height="100">
+        <p>いずみん</p>
+      </div>
+      <div class="user-contents">
+        <ul>
+          <li>フォロー</li>
+          <li>フォロワー</li>
+          <li>Outputする</li>
+          <li>Output履歴</li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-contents">
+      <h2>新着情報</h2> 
+      <div class="contents">
+        <section>
+          <article>
+            <h2>筋トレが最強のソリューションである</h2>
+            <p>全人類必読書すぎてやばい。</p>
+          </article>
+          <article>
+            <h2>HTML5&CSS3 デザインレシピ集</h2>
+            <p>フロントが苦手なら読んで損なし</p>
+          </article>
+        </section>
+      </div>
+    </div>
+  </div>
+</main> 
