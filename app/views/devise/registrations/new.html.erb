@@ -1,0 +1,73 @@
+<%= render partial: "books/header"%>
+
+<div class="registrations-wrapper">
+  <div class="registrations-container">
+    <div class="registrations-fields">
+      
+      <div class="regist-main">
+        <h2>Sign up</h2>  
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          <%= f.label :nickname, class:"regist-fields" %>
+          <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :email, class:"regist-fields" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password, class:"regist-fields" %>
+          <% if @minimum_password_length %>
+          <br><em class="regist-fields">(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation, class:"regist-fields" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+      </div>
+
+      <div class="regist-sub">
+        <div class="field">
+          <%= f.label :prefecture_id, class:"regist-fields" %>
+          <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {autofocus: true, autocomplete: "prefecture"}) %>
+        </div>
+
+        <div class="field">
+          <%= f.label :works, class:"regist-fields" %>
+          <%= f.text_field :works, autofocus: true, autocomplete: "works" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :genre_id, class:"regist-fields" %>
+          <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {autofocus: true, autocomplete: "genre"} ) %>
+        </div>
+
+        <div class="field">
+          <%= f.label :likes_author, class:"regist-fields" %>
+          <%= f.text_field :likes_author, autofocus: true, autocomplete: "likes_author" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :likes_book, class:"regist-fields" %>
+          <%= f.text_field :likes_book, autofocus: true, autocomplete: "likes_book" %>
+        </div>
+
+        <div class="field appeal-field">
+          <%= f.label :appeal_text, class:"regist-fields" %>
+          <%= f.text_area :appeal_text, class:"appeal-text",autofocus: true, autocomplete: "appeal_text" %>
+        </div>
+      </div>
+    </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+      <% end %>
+  </div>
+</div>
