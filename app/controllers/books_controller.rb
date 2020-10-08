@@ -22,12 +22,10 @@ class BooksController < ApplicationController
   end
 
   def rakuten_search
-    binding.pry
     @search_word = params[:title]
     @items = RakutenWebService::Books::Book.search(title: @search_word)
     @items.first(10).each do |item|
       puts "#{item['itemName']}"
     end
-    binding.pry
   end
 end
