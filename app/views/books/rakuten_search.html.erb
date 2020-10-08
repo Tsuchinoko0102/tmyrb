@@ -1,0 +1,5 @@
+<div>
+   <% @items.first(10).each do |item| %>
+      <%= "#{item['title']}" %>
+    <% end %>
+</div>
