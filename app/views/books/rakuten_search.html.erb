@@ -7,10 +7,12 @@
             <input type="radio">
           </div>
           <div class="search-image">
-            <%= image_tag("#{item['largeImageUrl']}", size: "70x90")%>
+            <%= link_to("#{item['largeImageUrl']}") do %>
+              <%= image_tag("#{item['largeImageUrl']}", size: "70x90")%>
+            <% end %>
           </div>
           <div class="search-contens">
-            <p><%= "タイトル: #{item['title']}" %></p>
+            <p><%= "タイトル: #{item['title'][0, 34]}" %></p>
             <p><%= "著者: #{item['author']}" %></p>
             <p><%= "出版社: #{item['publisherName']} / 発刊日: #{item['salesDate']}"%></p>
           </div>
