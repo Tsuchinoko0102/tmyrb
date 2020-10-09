@@ -2,7 +2,6 @@
   <div class="output-wrapper">
     <div class="output-info-container">
       <h2>書籍情報</h2>
-      <%= button_to("書籍検索" ,{controller: "books", action: "rakuten_search"}, method: :get) %>
       <%= form_with model: @search_word, url: rakuten_search_books_path, method: :get, local: true do |f| %>
         <p class="output-contents">
           <%= f.label :title, "タイトル", class:"output-labels"%>
@@ -10,6 +9,11 @@
           <%= f.submit("書籍検索") %>
         </p>
         <% end %>
+        <%= form_with model: @books, url: books_path, local: true do |f| %>
+        <p class="output-contents">
+          <%= f.label :title, "タイトル", class:"output-labels"%>
+          <%= f.text_field :title, placeholder:"hoge", readonly: true %>
+        </p>
         <p class="output-contents">
           <label class="output-labels">著者</label>
           <input type="text" name="hoge">
@@ -41,6 +45,7 @@
         <p class="output-submit">
           <input class="output-submit-btn" type="submit" value="Outputする">
         </p>
+        <% end %>
     </div>
   </div>
 </main>

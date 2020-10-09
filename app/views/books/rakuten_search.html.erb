@@ -1,5 +1,20 @@
-<div>
-   <% @items.first(10).each do |item| %>
-      <%= "#{item['title']}" %>
-    <% end %>
+<%= render partial: "header" %>
+<div class="search-wrapper">
+  <div class="search-container">
+    <% @items.first(10).each do |item| %>
+        <div class="search-blocks">
+          <div class="radio">
+            <input type="radio">
+          </div>
+          <div class="serach-image">
+            <%= image_tag("#{item['largeImageUrl']}", size: "70x90")%>
+          </div>
+          <div class="search-contens">
+            <p><%= "#{item['title']}" %></p>
+            <p><%= "#{item['author']}" %></p>
+            <p><%= "#{item['publisherName']} / #{item['salesDate']}"%></p>
+          </div>
+        </div>
+      <% end %>
+  </div>
 </div>

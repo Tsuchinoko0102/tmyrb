@@ -24,8 +24,5 @@ class BooksController < ApplicationController
   def rakuten_search
     @search_word = params[:title]
     @items = RakutenWebService::Books::Book.search(title: @search_word)
-    @items.first(10).each do |item|
-      puts "#{item['itemName']}"
-    end
   end
 end
