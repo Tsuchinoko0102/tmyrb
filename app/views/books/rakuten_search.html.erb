@@ -6,13 +6,13 @@
           <div class="radio">
             <input type="radio">
           </div>
-          <div class="serach-image">
+          <div class="search-image">
             <%= image_tag("#{item['largeImageUrl']}", size: "70x90")%>
           </div>
           <div class="search-contens">
-            <p><%= "#{item['title']}" %></p>
-            <p><%= "#{item['author']}" %></p>
-            <p><%= "#{item['publisherName']} / #{item['salesDate']}"%></p>
+            <p><%= "タイトル: #{item['title']}" %></p>
+            <p><%= "著者: #{item['author']}" %></p>
+            <p><%= "出版社: #{item['publisherName']} / 発刊日: #{item['salesDate']}"%></p>
           </div>
         </div>
       <% end %>
