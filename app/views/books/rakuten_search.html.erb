@@ -12,9 +12,9 @@
             <% end %>
           </div>
           <div class="search-contens">
-            <p><%= "タイトル: #{item['title'][0, 34]}" %></p>
-            <p><%= "著者: #{item['author']}" %></p>
-            <p><%= "出版社: #{item['publisherName']} / 発刊日: #{item['salesDate']}"%></p>
+            <p>タイトル: <b><%= "#{item['title'][0, 34]}" %></b></p>
+            <p>著者: <b><%= "#{item['author']}" %></b></p>
+            <p>出版社: <b><%= "#{item['publisherName']}" %></b> / 発刊日: <b><%= "#{item['salesDate']}" %></b></p>
           </div>
         </div>
       <% end %>
