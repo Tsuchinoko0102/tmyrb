@@ -12,11 +12,11 @@
         <%= form_with model: @books, url: books_path, local: true do |f| %>
         <p class="output-contents">
           <%= f.label :title, "タイトル", class:"output-labels"%>
-          <%= f.text_field :title, placeholder:"hoge", readonly: true %>
+            <%= f.text_field :title, placeholder: "#{@set_title}", readonly: true %>
         </p>
         <p class="output-contents">
           <label class="output-labels">著者</label>
-          <input type="text" name="hoge">
+            <%= f.text_field :author, placeholder: @set_author , readonly: true %>
         </p>
         <p class="output-contents">
           <label class="output-labels">ジャンル</label>

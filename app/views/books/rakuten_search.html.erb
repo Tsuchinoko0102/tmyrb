@@ -1,22 +1,32 @@
 <%= render partial: "header" %>
 <div class="search-wrapper">
+  <%= form_with(url: rakuten_select_books_path, method: :post, local: true) do |f| %>
   <div class="search-container">
-    <% @items.first(10).each do |item| %>
-        <div class="search-blocks">
-          <div class="radio">
-            <input type="radio">
+    <div class="search-results">
+      <% @items.first(10).each_with_index do |item, index| %>
+          <div class="search-blocks" >
+            <%= f.radio_button :selected, "#{index}" ,class:"radio" %>
+            <div class="search-image">
+              <%= link_to("#{item['largeImageUrl']}") do %>
+                <%= image_tag("#{item['largeImageUrl']}", size: "70x90")%>
+              <% end %>
+            </div>
+            <div class="search-contens">
+              <p>タイトル: <b><%= "#{item['title'][0, 32]}" %></b>
+              
+              </p>
+              <p>著者: <b><%= "#{item['author']}" %></b></p>
+          
+              <p>出版社: <b><%= "#{item['publisherName']}" %></b> / 発刊日: <b><%= "#{item['salesDate']}" %></b></p>
+            </div>
           </div>
-          <div class="search-image">
-            <%= link_to("#{item['largeImageUrl']}") do %>
-              <%= image_tag("#{item['largeImageUrl']}", size: "70x90")%>
-            <% end %>
-          </div>
-          <div class="search-contens">
-            <p>タイトル: <b><%= "#{item['title'][0, 34]}" %></b></p>
-            <p>著者: <b><%= "#{item['author']}" %></b></p>
-            <p>出版社: <b><%= "#{item['publisherName']}" %></b> / 発刊日: <b><%= "#{item['salesDate']}" %></b></p>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+    </div>
+    <div class="search-btn-container">
+      <div class="decision-btn">
+        <%= f.submit("書籍決定")%>
+      </div>
+    </div>
   </div>
+  <% end %>
 </div>

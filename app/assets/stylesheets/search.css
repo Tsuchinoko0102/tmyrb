@@ -1,8 +1,8 @@
 .search-wrapper{
   width: 100%;
 }
-.search-container{
-  height: calc(100vh - 100px);
+.search-results{
+  height: 440px;
   margin: 0 auto;
   overflow-y: scroll;
 }
@@ -19,7 +19,8 @@
 }
 
 .radio{
-  margin: auto 0;
+  display: inline-block;
+  margin: auto 10px;
 }
 
 .search-image{
