@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+
   def index
   end
 
@@ -35,10 +36,13 @@ class BooksController < ApplicationController
   end
 
   def rakuten_search
-    @search_word = params[:title]
-    session["search_word"] = @search_word
-    @items = RakutenWebService::Books::Book.search(title: session["search_word"])
-    session["search_word"]
+    if @search_word.present?
+      @search_word = params[:title]
+      session["search_word"] = @search_word
+      @items = RakutenWebService::Books::Book.search(title: session["search_word"])
+    else
+      render :new
+    end
   end
 
   def rakuten_select
