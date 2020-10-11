@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :session_delete, only: [:index, :show, :edit, :update, :destroy]
 
   def index
   end
@@ -59,4 +60,9 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author, :genre_id, :content, :rank_id, :publish)
   end
 
+  def session_delete
+    session["search_word"].clear
+    session["title"].clear
+    session["author"].clear
+  end
 end
