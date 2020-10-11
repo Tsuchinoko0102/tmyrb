@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2020_10_04_090412) do
     t.integer "genre_id", null: false
     t.string "author", null: false
     t.text "content", null: false
-    t.integer "rank", null: false
-    t.integer "publish", null: false
+    t.integer "rank_id", null: false
+    t.string "publish", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

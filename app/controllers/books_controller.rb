@@ -6,14 +6,20 @@ class BooksController < ApplicationController
     if session["title"].present? && session["author"].present?
       @set_title = session["title"]
       @set_author = session["author"]
-      binding.pry
-      Book.new(title: @set_title, author: @set_author)
+      @book = Book.new(title: @set_title, author: @set_author)
     else
-      Book.new
+      @book = Book.new
     end
   end
 
   def create
+    @book = Book.new(book_params)
+    if @book.valid?
+      @book.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -42,6 +48,11 @@ class BooksController < ApplicationController
     session["title"] = @items.response["Items"][num]["title"]
     session["author"] = @items.response["Items"][num]["author"]
     redirect_to new_book_path
+  end
+
+  private
+  def book_params
+    params.require(:book).permit(:title, :author, :genre_id, :content, :rank_id, :publish)
   end
 
 end

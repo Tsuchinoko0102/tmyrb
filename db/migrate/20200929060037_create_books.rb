@@ -5,8 +5,8 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.integer :genre_id  , null: false
       t.string :author     , null: false
       t.text :content      , null: false
-      t.integer :rank      , null: false
-      t.integer :publish   , null: false
+      t.integer :rank_id   , null: false
+      t.string  :publish   , null: false
       t.timestamps
     end
   end
