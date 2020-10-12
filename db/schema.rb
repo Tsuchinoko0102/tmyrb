@@ -14,13 +14,15 @@ ActiveRecord::Schema.define(version: 2020_10_04_090412) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
-    t.integer "genre_id", null: false
     t.string "author", null: false
+    t.integer "genre_id", null: false
     t.text "content", null: false
-    t.integer "rank", null: false
-    t.integer "publish", null: false
+    t.integer "rank_id", null: false
+    t.string "publish", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

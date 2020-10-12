@@ -1,0 +1,28 @@
+.search-wrapper{
+  width: 100%;
+}
+.search-results{
+  height: 440px;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+.search-blocks {
+  align-items: center;
+  width: 700px;
+  height: 100px;
+  background-color: rgb(235, 227, 209);
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+
+.radio{
+  display: inline-block;
+  margin: auto 10px;
+}
+
+.search-image{
+  margin-right: 7px;
+}

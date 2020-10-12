@@ -2,44 +2,51 @@
   <div class="output-wrapper">
     <div class="output-info-container">
       <h2>書籍情報</h2>
-      <form>
+      <%= form_with model: @search_word, url: rakuten_search_books_path, method: :get, local: true do |f| %>
         <p class="output-contents">
-          <label class="output-labels">タイトル</label>
-          <input type="text" name="hoge">
-          <button>検索</button>
+          <%= f.label :title, "タイトル検索", class:"output-labels"%>
+          <%= f.text_field :title, placeholder:"hoge" %>
+          <%= f.submit("書籍検索") %>
         </p>
-        <p class="output-contents">
-          <label class="output-labels">著者 </label>
-          <input type="text" name="hoge">
-        </p>
-        <p class="output-contents">
-          <label class="output-labels">ジャンル</label>
-          <select name="hoge">
-            <option value="hoge">---</option>
-            <option value="hoge">経済</option>
-            <option value="hoge">スポーツ</option>
-          </select>
-        </p>
-        <p class="output-contents output-texts">
-          <label class="output-labels output-text-label">Output</label>
-          <textarea class="output-textarea" name="hoge" placeholder="1000文字以内で入力してください"></textarea>
-        </p>
-        <p class="output-contents">
-          <label class="output-labels">おすすめ度</label>
-          <select name="hoge">
-            <option value="hoge">星1　★☆☆☆☆</option>
-            <option value="hoge">星5　★★★★★</option>
-          </select>
-        </p>
-        <p class="output-contents">
-          <label class="output-labels">公開設定</label>
-          <span class="radio"><input type="radio" name="public">公開</span>
-          <span class="radio"><input type="radio" name="public">非公開</span>
-        </p>
-        <p class="output-submit">
-          <input class="output-submit-btn" type="submit" value="Outputする">
-        </p>
-      </form>
+        <% end %>
+        <% if session["title"].present? && session["author"].present? %>
+          <%= form_with model: @book, url: books_path, local: true do |f| %>
+          <div class="output-contents">
+            <%= f.label :title, "タイトル", class:"output-labels"%>
+              <span><%= @set_title %></span>
+              <%= f.text_field :title, value: @set_title, hidden: true %>
+          </div>
+          <div class="output-contents">
+            <%= f.label :author, "著者", class:"output-labels"%>
+              <span><%= @set_author %></span>
+              <%= f.text_field :author, value: @set_author , hidden: true %>
+          </div>
+          <div class="output-contents">
+            <%= f.label :genre_id, "ジャンル", class:"output-labels" %>
+            <%= f.collection_select(:genre_id, Genre.all, :id, :name, {} ) %>
+          </div>
+          <div class="output-contents output-texts">
+            <%= f.label :content, "Output", class:"output-labels output-text-label" %>
+            <%= f.text_area :content, class:"output-textarea", placeholder:"1000文字以内で入力してください"%>
+          </div>
+          <div class="output-contents">
+            <%= f.label :rank_id, "おすすめ度", class: "output-labels" %>
+            <%= f.collection_select(:rank_id, Rank.all, :id, :name, {} ) %>
+          </div>
+          <div class="output-contents">
+            <%= f.label :public, "公開設定", class: "output-labels" %>
+            <%= f.radio_button :publish, "public", checked: true %>
+            <%= label_tag :publish, "公開" %>
+            <%= f.radio_button :publish, "private" %>
+            <%= label_tag :publish, "非公開" %>
+          </div>
+          <div class="output-submit">
+            <%= f.submit "Outputする", class: "output-submit-btn" %>
+          </div>
+          <% end %>
+        <% else %>
+          <p>書籍のタイトルを選んでください</p>
+        <% end %>
     </div>
   </div>
 </main>
