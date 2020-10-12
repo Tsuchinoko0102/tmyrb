@@ -37,8 +37,8 @@ class BooksController < ApplicationController
   end
 
   def rakuten_search
+    @search_word = params[:title]
     if @search_word.present?
-      @search_word = params[:title]
       session["search_word"] = @search_word
       @items = RakutenWebService::Books::Book.search(title: session["search_word"])
     else
