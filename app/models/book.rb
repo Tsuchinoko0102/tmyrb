@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
+  belongs_to :user
   belongs_to_active_hash :genre
   belongs_to_active_hash :rank
 
@@ -11,6 +12,7 @@ class Book < ApplicationRecord
     validates :content
     validates :rank_id
     validates :publish
+    validates :user
   end
 
   with_options numericality: {other_than: 1} do

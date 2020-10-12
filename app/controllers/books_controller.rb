@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :session_delete, only: [:index, :show, :edit, :update, :destroy]
 
+
   def index
   end
 
