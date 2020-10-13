@@ -62,8 +62,10 @@ class BooksController < ApplicationController
   end
 
   def session_delete
-    session["search_word"].clear
-    session["title"].clear
-    session["author"].clear
+    if session["search_word"].present? || session["title"].present? || session["author"].present?
+      session["search_word"].clear
+      session["title"].clear
+      session["author"].clear
+    end
   end
 end
