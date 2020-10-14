@@ -57,7 +57,7 @@ class BooksController < ApplicationController
     session["title"] = select_book["title"]
     session["author"] = select_book["author"]
     session["largeImageUrl"] = select_book["largeImageUrl"]
-    session["itemUrl"] = select_book["Items"][num]["itemUrl"]
+    session["itemUrl"] = select_book["itemUrl"]
     redirect_to new_book_path
   end
 
