@@ -18,10 +18,14 @@
     <div class="main-contents">
       <h2>新着情報</h2> 
       <div class="contents">
-        <% @books.each do |b| %>
-          <%= b.title %>
-          <%= b.author %>
-        <% end %>
+        <div class="my-books">
+          <div class="my-book-info">
+            <% @books.each do |b| %>
+              <p><%= b.title %></p>
+              <p><%= b.author %></p>
+            <% end %>
+          </div>
+      </div>
       </div>
     </div>
   </div>
