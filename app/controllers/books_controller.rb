@@ -9,7 +9,9 @@ class BooksController < ApplicationController
     if session["title"].present? && session["author"].present?
       @set_title = session["title"]
       @set_author = session["author"]
-      @book = Book.new(title: @set_title, author: @set_author)
+      @set_image = session["largeImageUrl"]
+      @set_url = session["itemUrl"]
+      @book = Book.new(title: @set_title, author: @set_author, image: @set_image, url: @set_url)
     else
       @book = Book.new
     end
@@ -51,14 +53,17 @@ class BooksController < ApplicationController
     @search_word = session["search_word"]
     @items = RakutenWebService::Books::Book.search(title: session["search_word"])
     num = params[:selected].to_i
-    session["title"] = @items.response["Items"][num]["title"]
-    session["author"] = @items.response["Items"][num]["author"]
+    select_book = @items.response["Items"][num]
+    session["title"] = select_book["title"]
+    session["author"] = select_book["author"]
+    session["largeImageUrl"] = select_book["largeImageUrl"]
+    session["itemUrl"] = select_book["Items"][num]["itemUrl"]
     redirect_to new_book_path
   end
 
   private
   def book_params
-    params.require(:book).permit(:title, :author, :genre_id, :content, :rank_id, :publish).merge(user_id: current_user.id)
+    params.require(:book).permit(:title, :author, :genre_id, :content, :rank_id, :publish, :image, :url, :lead).merge(user_id: current_user.id)
   end
 
   def session_delete
@@ -66,6 +71,8 @@ class BooksController < ApplicationController
       session["search_word"].clear
       session["title"].clear
       session["author"].clear
+      session["largeImageUrl"].clear
+      session["itemUrl"].clear
     end
   end
 end
