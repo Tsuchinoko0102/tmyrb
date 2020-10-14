@@ -3,6 +3,8 @@
     <div class="output-info-container">
       <h2>書籍情報</h2>
       <%= form_with model: @search_word, url: rakuten_search_books_path, method: :get, local: true do |f| %>
+        <%= f.hidden_field :image, value: @set_image %>
+        <%= f.hidden_field :url, value: @set_url %>
         <p class="output-contents">
           <%= f.label :title, "タイトル検索", class:"output-labels"%>
           <%= f.text_field :title, placeholder:"hoge" %>
