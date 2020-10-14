@@ -58,12 +58,14 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :author, :genre_id, :content, :rank_id, :publish)
+    params.require(:book).permit(:title, :author, :genre_id, :content, :rank_id, :publish).merge(user_id: current_user.id)
   end
 
   def session_delete
-    session["search_word"].clear
-    session["title"].clear
-    session["author"].clear
+    if session["search_word"].present? || session["title"].present? || session["author"].present?
+      session["search_word"].clear
+      session["title"].clear
+      session["author"].clear
+    end
   end
 end

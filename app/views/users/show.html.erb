@@ -1,0 +1,32 @@
+<%= render partial: "books/header"%>
+
+<main>
+  <div class="main-container">
+    <div class="user-contents">
+      <h2>ユーザー情報</h2>
+      <div class="user-field">
+        <p><%= current_user.nickname %></p>
+      </div>
+      <div class="user-contents">
+        <ul>
+          <li>フォロー / フォロワー</li>
+          <li><%= link_to("プロフィール編集する", edit_user_registration_path) %></li>
+          <li><%= link_to("Outputする", new_book_path) %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-contents">
+      <h2>新着情報</h2> 
+      <div class="contents">
+        <div class="my-books">
+          <div class="my-book-info">
+            <% @books.each do |b| %>
+              <p><%= b.title %></p>
+              <p><%= b.author %></p>
+            <% end %>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</main> 
