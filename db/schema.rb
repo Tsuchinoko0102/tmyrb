@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_090412) do
     t.integer "rank_id", null: false
     t.string "publish", null: false
     t.bigint "user_id", null: false
-    t.string "image　　　", null: false
+    t.string "image", null: false
     t.string "url", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
