@@ -13,6 +13,9 @@ class Book < ApplicationRecord
     validates :rank_id
     validates :publish
     validates :user
+    validates :image
+    validates :url
+    validates :lead
   end
 
   with_options numericality: {other_than: 1} do
