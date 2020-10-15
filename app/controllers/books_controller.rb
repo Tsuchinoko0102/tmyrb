@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :session_delete, only: [:index, :show, :edit, :update, :destroy]
+  skip_before_action :session_delete, except: [:index, :show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: :index
 
   def index
@@ -66,13 +66,5 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author, :genre_id, :content, :rank_id, :publish, :image, :url, :lead).merge(user_id: current_user.id)
   end
 
-  def session_delete
-    if session["search_word"].present? || session["title"].present? || session["author"].present?
-      session["search_word"].clear
-      session["title"].clear
-      session["author"].clear
-      session["largeImageUrl"].clear
-      session["itemUrl"].clear
-    end
-  end
+  
 end
