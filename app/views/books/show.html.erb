@@ -1,0 +1,29 @@
+<main>
+  <div class="output-wrapper">
+    <div class="output-info-container">
+      <h2>書籍情報</h2>
+          <div class="output-contents">
+              <%= "タイトル： #{@book.title}" %>
+          </div>
+          <div class="output-contents">
+             <%= "著者： #{@book.author}" %>
+          </div>
+          <div class="output-contents">
+            <%= "ジャンル： #{@book.genre}"%>
+          </div>
+          <div class="output-contents">
+           <%= "リード文： #{@book.lead}"%>
+          </div>
+          <div class="output-contents output-texts">
+            <%= "アウトプット内容： #{@book.content}"%>
+          </div>
+          <div class="output-contents">
+            <%= "おすすめ度： #{@book.rank_id}"%>
+          </div>
+          <div class="output-contents">
+            <%= "公開設定： #{@book.publish}"%>
+          </div>
+          
+    </div>
+  </div>
+</main>
