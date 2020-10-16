@@ -1,3 +1,21 @@
 <%= render partial: "header"%>
 
-<%= render partial: "forms"%>
+<main>
+  <div class="output-wrapper">
+    <div class="output-info-container">
+      <h2>書籍情報</h2>
+      <%= form_with model: @search_word, url: rakuten_search_books_path, method: :get, local: true do |f| %>
+        <p class="output-contents">
+          <%= f.label :title, "タイトル検索", class:"output-labels"%>
+          <%= f.text_field :title, placeholder:"hoge" %>
+          <%= f.submit("書籍検索") %>
+        </p>
+        <% end %>
+        <% if session["title"].present? && session["author"].present? %>
+          <%= render partial: "forms"%>
+        <% else %>
+          <p>書籍のタイトルを選んでください</p>
+        <% end %>
+    </div>
+  </div>
+</main>
