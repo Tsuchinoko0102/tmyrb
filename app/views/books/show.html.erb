@@ -1,3 +1,4 @@
+<%= render partial:"header"%>
 <main>
   <div class="output-wrapper">
     <div class="output-info-container">
@@ -9,7 +10,7 @@
              <%= "著者： #{@book.author}" %>
           </div>
           <div class="output-contents">
-            <%= "ジャンル： #{@book.genre}"%>
+            <%= "ジャンル： #{@book.genre.name}"%>
           </div>
           <div class="output-contents">
            <%= "リード文： #{@book.lead}"%>
