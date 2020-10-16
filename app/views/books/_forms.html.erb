@@ -11,6 +11,8 @@
         <% end %>
         <% if session["title"].present? && session["author"].present? %>
           <%= form_with model: @book, url: books_path, local: true do |f| %>
+          <%= f.hidden_field :image, value: @set_image %>
+          <%= f.hidden_field :url, value: @set_url %>
           <div class="output-contents">
             <%= f.label :title, "タイトル", class:"output-labels"%>
               <span><%= @set_title %></span>
@@ -24,6 +26,10 @@
           <div class="output-contents">
             <%= f.label :genre_id, "ジャンル", class:"output-labels" %>
             <%= f.collection_select(:genre_id, Genre.all, :id, :name, {} ) %>
+          </div>
+          <div class="output-contents">
+            <%= f.label :lead, "リード文", class:"output-labels" %>
+            <%= f.text_field :lead, placeholder: "30文字以内で入力してください" %>
           </div>
           <div class="output-contents output-texts">
             <%= f.label :content, "Output", class:"output-labels output-text-label" %>

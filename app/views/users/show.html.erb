@@ -3,9 +3,9 @@
 <main>
   <div class="main-container">
     <div class="user-contents">
-      <h2>ユーザー情報</h2>
+      <h2><%= current_user.nickname %></h2>
       <div class="user-field">
-        <p><%= current_user.nickname %></p>
+        <img src="hoge" alt="画像が出るよ本当は">
       </div>
       <div class="user-contents">
         <ul>
@@ -21,8 +21,17 @@
         <div class="my-books">
           <div class="my-book-info">
             <% @books.each do |b| %>
-              <p><%= b.title %></p>
-              <p><%= b.author %></p>
+              <div class="my-book-image">
+                <%= image_tag(b.image, size:"70x90") %>
+              </div>
+              <div class="my-book-contents">
+                <p><%= b.title %></p>
+                <p><%= b.author %></p>
+                <p><%= b.lead %><p>
+              </div>
+              <div class="my-book-timestamp">
+                <p><%= l b.created_at %></p>
+              </div>
             <% end %>
           </div>
       </div>
