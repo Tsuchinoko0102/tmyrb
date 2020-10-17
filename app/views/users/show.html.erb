@@ -10,7 +10,7 @@
       <div class="user-contents">
         <ul>
           <li>フォロー / フォロワー</li>
-          <li><%= link_to("プロフィール編集する", edit_user_path) %></li>
+          <li><%= link_to("プロフィール編集する", edit_user_path(current_user.id)) %></li>
           <li><%= link_to("Outputする", new_book_path) %></li>
         </ul>
       </div>

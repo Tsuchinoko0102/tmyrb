@@ -10,34 +10,12 @@
       <div class="user-contents">
         <ul>
           <li>フォロー / フォロワー</li>
-          <li><%= link_to("プロフィール編集する", edit_user_path(current_user.id)) %></li>
+          <li><%= link_to("マイページへ", user_path(current_user.id)) %></li>
           <li><%= link_to("Outputする", new_book_path) %></li>
         </ul>
       </div>
     </div>
     <div class="main-contents">
-      <h2>新着情報</h2> 
-      <div class="contents">
-        <div class="my-books">
-          <% @books.each do |b| %>
-            <div class="my-book-info">
-              <%= link_to(book_path(b.id)) do %>
-                <div class="my-book-image">
-                  <%= image_tag(b.image, size:"70x90") %>
-                </div>
-                <div class="my-book-contents">
-                  <p><%= b.title %></p>
-                  <p><%= b.author %></p>
-                  <p><%= b.lead %><p>
-                </div>
-                <div class="my-book-timestamp">
-                  <p><%= l b.created_at %></p>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
     </div>
   </div>
 </main> 
