@@ -6,6 +6,6 @@ Rails.application.routes.draw do
       post "rakuten_select"
     end
   end
-  root to: "books#index"
-  resources :users, only: [:show, :edit, :update]
+  root to: "users#index"
+  resources :users, only: [:index, :show, :edit, :update]
 end
