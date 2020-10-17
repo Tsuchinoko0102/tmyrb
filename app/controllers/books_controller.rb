@@ -35,12 +35,23 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @set_title = @book.title
     @set_author = @book.author
+    @set_image = @book.image
+    @set_url = @book.url
   end
 
   def update
+    if Book.update(book_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @book = Book.find(params[:id])
+    if @book.destroy
+      redirect_to root_path
+    end
   end
 
   def rakuten_search
