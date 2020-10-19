@@ -63,3 +63,4 @@ gem 'image_processing', '~> 1.2'
 gem 'payjp'
 gem 'aws-sdk-s3', require: false
 gem 'rakuten_web_service'
+gem 'data-confirm-modal'

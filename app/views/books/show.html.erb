@@ -31,7 +31,8 @@
           <% end %>
         </li>
         <li>
-        <%= link_to(book_path(id: @book.id), method: :delete) do %>
+        <%= link_to(book_path(id: @book.id), method: :delete,
+            data:{ title: '警告' ,confirm: '本当に削除しますか？', commit: "OK", cancel: "cancel" }) do %>
           <%= button_tag("削除")%>
         <% end %>
     </div>
