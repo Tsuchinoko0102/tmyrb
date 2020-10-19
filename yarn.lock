@@ -2411,6 +2411,11 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+data-confirm-modal@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/data-confirm-modal/-/data-confirm-modal-1.6.2.tgz#81fc8ea298cfd9311d066915d1710b3cfa57d96b"
+  integrity sha512-UYYgx8hS65X8Y336YRp1x6A5Gfkhh4iYkLq5jw7oS++hTcq/3yO8JOrbfHvvr7qqqQxBSPRyvUXnFEFIr4ja4w==
+
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -5998,6 +6003,11 @@ querystringify@^2.1.1:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
   integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
+
+rails-ujs@^5.2.4-4:
+  version "5.2.4-4"
+  resolved "https://registry.yarnpkg.com/rails-ujs/-/rails-ujs-5.2.4-4.tgz#41bf12a3d1d49ad5124d69b87908e1fc2d7a6927"
+  integrity sha512-I/So4YNUwrvbKyKfGOSQMCF0CxeAcGh9Rnse/Bx9SAsoYSaiKIHSjvzp55rfw05QhOj60wLfnjdycSOCmN7Hlg==
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
