@@ -3,15 +3,19 @@
 <main>
   <div class="main-container">
     <div class="user-contents">
+    <% if user_signed_in? %>
       <h2><%= current_user.nickname %></h2>
+    <% end %>
       <div class="user-field">
         <img src="hoge" alt="画像が出るよ本当は">
       </div>
       <div class="user-contents">
         <ul>
           <li>フォロー / フォロワー</li>
+          <% if user_signed_in?%>
           <li><%= link_to("マイページへ", user_path(current_user.id)) %></li>
           <li><%= link_to("Outputする", new_book_path) %></li>
+          <% end%>
         </ul>
       </div>
     </div>
