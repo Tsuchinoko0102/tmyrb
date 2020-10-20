@@ -28,11 +28,20 @@
         <td>おすすめ度</td>
         <td><%= @book.rank.name%></td>
       </tr>
+      <% if @book.user_id == current_user.id %>
       <tr>
+      <%# 閲覧者が投稿者と同じIDなら「公開設定」が表示され、異なる場合は「投稿者名」が表示される %>
         <td>公開設定</td>
         <td><%= @book.publish%></td>
       </tr>
+      <% else %>
+      <tr>
+        <td>投稿者名</td>
+        <td><%= @book.user.nickname%></td>
+      </tr>
+      <% end %>
       </table>
+      
       <%# 閲覧者が投稿者と同じIDなら「編集」「削除」ボタンを表示し、異なる場合は「戻る」ボタンを表示する %>
       <% if @book.user_id == current_user.id %>
         <ul>
