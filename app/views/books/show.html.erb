@@ -24,16 +24,21 @@
       <div class="output-contents">
         <%= "公開設定： #{@book.publish}"%>
       </div>
-      <ul>
-        <li>
-          <%= link_to(edit_book_path(id: @book.id)) do%>
-            <%= button_tag("編集")%>
-          <% end %>
-        </li>
-        <li>
-        <%= link_to(book_path(id: @book.id), method: :delete,
-            data:{ title: '警告' ,confirm: '本当に削除しますか？', commit: "OK", cancel: "cancel" }) do %>
-          <%= button_tag("削除")%>
+      <% if @book.user_id == current_user.id %>
+        <ul>
+          <li>
+            <%= link_to(edit_book_path(id: @book.id)) do%>
+              <%= button_tag("編集")%>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(book_path(id: @book.id), method: :delete,
+                data:{ title: '警告' ,confirm: '本当に削除しますか？', commit: "OK", cancel: "cancel" }) do %>
+              <%= button_tag("削除")%>
+            <% end %>
+          </li>
+        <% else %>
+          <%= button_to("戻る", root_path, method: :get)%>
         <% end %>
     </div>
   </div>
