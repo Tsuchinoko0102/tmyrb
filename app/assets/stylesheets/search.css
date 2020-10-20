@@ -7,7 +7,7 @@
   overflow-y: scroll;
 }
 
-.search-blocks {
+.book-blocks {
   align-items: center;
   width: 700px;
   height: 100px;
@@ -23,6 +23,6 @@
   margin: auto 10px;
 }
 
-.search-image{
+.book-image{
   margin-right: 7px;
 }
