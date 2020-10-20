@@ -29,6 +29,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @hoge = @book.content
   end
 
   def edit
@@ -40,7 +41,8 @@ class BooksController < ApplicationController
   end
 
   def update
-    if Book.update(book_params)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
       redirect_to root_path
     else
       render :edit
