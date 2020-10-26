@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   
   def show
     @books = Book.where(user_id: current_user.id)
+    @pie = User.chart_data(params[:id])
+    binding.pry
   end
 
   def edit
