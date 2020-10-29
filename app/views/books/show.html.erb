@@ -3,37 +3,61 @@
   <div class="output-wrapper">
     <div class="output-info-container">
       <h2>書籍情報</h2>
-      <div class="output-contents">
-          <%= "タイトル： #{@book.title}" %>
-      </div>
-      <div class="output-contents">
-          <%= "著者： #{@book.author}" %>
-      </div>
-      <div class="output-contents">
-        <%= "ジャンル： #{@book.genre.name}"%>
-      </div>
-      <div class="output-contents">
-        <%= "リード文： #{@book.lead}"%>
-      </div>
-      <div class="output-contents output-texts">
-        <%= "アウトプット内容： #{@book.content}"%>
-      </div>
-      <div class="output-contents">
-        <%= "おすすめ度： #{@book.rank_id}"%>
-      </div>
-      <div class="output-contents">
-        <%= "公開設定： #{@book.publish}"%>
-      </div>
-      <ul>
-        <li>
-          <%= link_to(edit_book_path(id: @book.id)) do%>
-            <%= button_tag("編集")%>
-          <% end %>
-        </li>
-        <li>
-        <%= link_to(book_path(id: @book.id), method: :delete,
-            data:{ title: '警告' ,confirm: '本当に削除しますか？', commit: "OK", cancel: "cancel" }) do %>
-          <%= button_tag("削除")%>
+      <table>
+      <tr>
+        <td>タイトル</td>
+        <td><%= @book.title%></td>
+      </tr>
+      <tr>
+        <td>著者</td>
+        <td><%= @book.author%></td>
+      </tr>
+      <tr>
+        <td>ジャンル</td>
+        <td><%= @book.genre.name%></td>
+      </tr>
+      <tr>
+        <td>リード文</td>
+        <td><%= @book.lead%></td>
+      </tr>
+      <tr>
+        <td>アウトプット</td>
+        <td><%= safe_join(@book.content.split("\n\r"), tag(:br))%></td>
+      </tr>
+      <tr>
+        <td>おすすめ度</td>
+        <td><%= @book.rank.name%></td>
+      </tr>
+      <% if @book.user_id == current_user.id %>
+      <tr>
+      <%# 閲覧者が投稿者と同じIDなら「公開設定」が表示され、異なる場合は「投稿者名」が表示される %>
+        <td>公開設定</td>
+        <td><%= @book.publish%></td>
+      </tr>
+      <% else %>
+      <tr>
+        <td>投稿者名</td>
+        <td><%= @book.user.nickname%></td>
+      </tr>
+      <% end %>
+      </table>
+      
+      <%# 閲覧者が投稿者と同じIDなら「編集」「削除」ボタンを表示し、異なる場合は「戻る」ボタンを表示する %>
+      <% if @book.user_id == current_user.id %>
+        <ul>
+          <li>
+            <%= link_to(edit_book_path(id: @book.id)) do%>
+              <%= button_tag("編集")%>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(book_path(id: @book.id), method: :delete,
+                data:{ title: '警告' ,confirm: '本当に削除しますか？', commit: "OK", cancel: "cancel" }) do %>
+              <%= button_tag("削除")%>
+            <% end %>
+          </li>
+        <% else %>
+          <%= button_to("戻る", root_path, method: :get)%>
         <% end %>
     </div>
   </div>

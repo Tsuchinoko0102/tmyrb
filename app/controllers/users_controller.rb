@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
 
   def index
-    @books = Book.all.order(created_at: :DESC)
+    if user_signed_in?
+      @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
+    else
+      @books = Book.all.order(created_at: :DESC)
+    end
   end
   
   def show
     @books = Book.where(user_id: current_user.id)
+    @pie = User.chart_data(params[:id])
   end
 
   def edit

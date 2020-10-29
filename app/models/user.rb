@@ -9,4 +9,14 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
 
+  def self.chart_data(user_id)
+    @books = Book.where(user_id: user_id)
+    ary = []
+    @books.each do |i|
+      ary.push(Genre.find_by(id: i.genre_id)[:name])
+    end
+    ary.group_by(&:itself).map{|key, value|[key, value.count]}.to_h
+  end
+
+
 end

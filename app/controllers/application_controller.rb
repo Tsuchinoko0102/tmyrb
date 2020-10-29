@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def session_delete
-    if session["search_word"].present? || session["title"].present? || session["author"].present?
+    if session["search_word"].present? && session["title"].present? || session["author"].present?
       session["search_word"].clear
       session["title"].clear
       session["author"].clear

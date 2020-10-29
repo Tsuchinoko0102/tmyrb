@@ -26,3 +26,16 @@
   margin-top: 10px;
   text-align: center;
 }
+
+.book-blocks{
+  padding: 5px;
+}
+
+.info-box{
+  width: 100%;
+}
+
+.my-book-timestamp{
+  text-align: right;
+  font-size: 12px;
+}

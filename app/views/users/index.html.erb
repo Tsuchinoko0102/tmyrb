@@ -22,12 +22,12 @@
     <div class="main-contents">
     <div class="other-books">
           <% @books.each do |b| %>
-            <div class="other-book-info">
-              <%= link_to(book_path(b.id)) do %>
-                <div class="other-book-image">
+            <%= link_to(book_path(b.id)) do %>
+              <div class="book-blocks">
+                <div class="book-image">
                   <%= image_tag(b.image, size:"70x90") %>
                 </div>
-                <div class="ohter-book-contents">
+                <div class="book-info">
                   <p><%= b.title %></p>
                   <p><%= b.author %></p>
                   <p><%= b.lead %><p>
@@ -35,8 +35,8 @@
                 <div class="other-book-timestamp">
                   <p><%= l b.created_at %></p>
                 </div>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
           <% end %>
         </div>
     </div>

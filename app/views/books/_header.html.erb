@@ -1,7 +1,9 @@
 <header>
   <div class="header-container">
     <div class="header-left">
+    <%= link_to root_path do%>
       <h1 class="app-name">TmyRB</h1>
+    <% end %>
       <div class="header-contents">
         <form>
           <input type="text" class="search-box" placeholder="検索する" name="hoge">
@@ -15,17 +17,17 @@
       <ul class="sign-btns">
       <% if user_signed_in? %>
         <li class="sign-btns-left">
-          <%= link_to(current_user.nickname, edit_user_registration_path) %>
+          <%= button_to(current_user.nickname, edit_user_registration_path, method: :get) %>
         </li>
         <li class="sign-btns-right">
-          <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+          <%= button_to("ログアウト", destroy_user_session_path, method: :delete) %>
         </li>
       <% else %>
         <li class="sign-btns-left">
-          <%= link_to("新規登録", new_user_registration_path) %>
+          <%= button_to("新規登録", new_user_registration_path, method: :get) %>
         </li>
         <li class="sign-btns-right">
-          <%= link_to("ログイン", new_user_session_path) %>
+          <%= button_to("ログイン", new_user_session_path, method: :get) %>
         </li>
       <% end %>
       </ul>
