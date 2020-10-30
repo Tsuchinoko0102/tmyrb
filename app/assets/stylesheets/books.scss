@@ -117,3 +117,50 @@ header {
 .radio{
   padding-right: 20px;
 }
+
+.registrations-fields{
+  display: flex;
+  justify-content: space-around;
+ }
+
+
+.field{
+  margin-bottom: 10px;
+}
+
+.regist-fields{
+  display: inline-block;
+  width: 200px;
+}
+
+.appeal-field{
+  display: flex;
+}
+
+.appeal-text{
+  width: 450px;
+  height: 120px;
+}
+
+.actions{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.book-blocks{
+  padding: 5px;
+}
+
+.info-box{
+  width: 100%;
+}
+
+.my-book-timestamp{
+  text-align: right;
+  font-size: 12px;
+}
+
+.my-books{
+  padding-left: 30px;
+  transform: scale(0.9, 0.9);
+}
