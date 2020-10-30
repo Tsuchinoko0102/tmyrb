@@ -10,6 +10,16 @@ header {
   height: 100px;
 }
 
+main {
+  height: calc(100vh - 100px);
+}
+
+.main-contents-header{
+  padding-top: 15px;
+  text-align: center;
+  font-size: 20px;
+}
+
 .header-container {
   width: 80%;
   padding: 10px;
