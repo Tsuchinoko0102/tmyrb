@@ -53,7 +53,8 @@ header {
 
 .main-contents{
   width: calc(1040px - 300px);
-  background-image: url("/assets/images/notebook.png");
+  background-image: image-url("notebook.png");
+  background-size: cover;
 }
 
 .output-wrapper{
