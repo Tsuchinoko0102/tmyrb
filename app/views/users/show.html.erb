@@ -3,20 +3,7 @@
 <main>
   <div class="main-container">
     <%# メイン左窓、ユーザー関連情報の一覧 %>
-    <div class="user-contents">
-      <div class="user-info">
-        <%= image_tag("izumin-sample.jpg", size: "150x120")%>
-        <p><%= current_user.nickname %></p>
-      </div>
-      <div class="user-menu">
-        <ul>
-          <li>フォロー / フォロワー</li>
-          <li><%= link_to("プロフィール編集する", edit_user_path(current_user.id)) %></li>
-          <li><%= link_to("Outputする", new_book_path) %></li>
-        </ul>
-      </div>
-    </div>
-    
+    <%= render partial: "user_contents"%>
     <%# メイン中央〜右、投稿情報の一覧 %>
     <div class="main-contents">
       <h2 class="main-contents-header">投稿一覧</h2> 

@@ -2,23 +2,9 @@
 
 <main>
   <div class="main-container">
-    <div class="user-contents">
     <% if user_signed_in? %>
-      <h2><%= current_user.nickname %></h2>
+      <%= render partial: "user_contents"%>
     <% end %>
-      <div class="user-field">
-        <%= image_tag("izumin-sample.jpg", size: "150x120")%>
-      </div>
-      <div class="user-contents">
-        <ul>
-          <li>フォロー / フォロワー</li>
-          <% if user_signed_in?%>
-          <li><%= link_to("マイページへ", user_path(current_user.id)) %></li>
-          <li><%= link_to("Outputする", new_book_path) %></li>
-          <% end%>
-        </ul>
-      </div>
-    </div>
     <div class="main-contents">
     <div class="other-books">
           <% @books.each do |b| %>

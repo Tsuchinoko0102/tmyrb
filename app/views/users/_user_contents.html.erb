@@ -1,0 +1,13 @@
+<div class="user-contents">
+  <div class="user-info">
+    <%= image_tag("izumin-sample.jpg", size: "150x120")%>
+    <p><%= current_user.nickname %></p>
+  </div>
+  <div class="user-menu">
+    <ul>
+      <li>フォロー / フォロワー</li>
+      <li><%= link_to("プロフィール編集する", edit_user_path(current_user.id)) %></li>
+      <li><%= link_to("Outputする", new_book_path) %></li>
+    </ul>
+  </div>
+</div>
