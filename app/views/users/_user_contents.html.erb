@@ -5,9 +5,10 @@
   </div>
   <div class="user-menu">
     <ul>
-      <li>フォロー / フォロワー</li>
-      <li><%= link_to("プロフィール編集する", edit_user_path(current_user.id)) %></li>
-      <li><%= link_to("Outputする", new_book_path) %></li>
+      <li class="user-menu-lists">フォロー / フォロワー</li>
+      <li class="user-menu-lists"><%= link_to("プロフィール編集する", edit_user_path(current_user.id)) %></li>
+      <li class="user-menu-lists"><%= link_to("Outputする", new_book_path) %></li>
+      <li class="user-menu-lists"><%= link_to("自分の投稿を確認する", user_path(current_user.id)) %></li>
     </ul>
   </div>
 </div>
