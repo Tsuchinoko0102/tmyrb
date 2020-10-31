@@ -8,7 +8,11 @@
       <li class="user-menu-lists">フォロー / フォロワー</li>
       <li class="user-menu-lists"><%= link_to("プロフィール編集する", edit_user_path(current_user.id)) %></li>
       <li class="user-menu-lists"><%= link_to("Outputする", new_book_path) %></li>
-      <li class="user-menu-lists"><%= link_to("自分の投稿を確認する", user_path(current_user.id)) %></li>
+      <% if current_page?(root_path)%>
+        <li class="user-menu-lists"><%= link_to("自分の投稿を確認する", user_path(current_user.id)) %></li>
+      <% elsif current_page?(user_path(current_user.id))%>
+        <li class="user-menu-lists"><%= link_to("トップページに戻る", root_path) %></li>
+      <% end %>
     </ul>
   </div>
 </div>
