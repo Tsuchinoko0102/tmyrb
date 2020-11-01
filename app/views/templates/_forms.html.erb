@@ -16,7 +16,7 @@
     <%= f.collection_select(:genre_id, Genre.all, :id, :name, {} ) %>
   </div>
   <div class="output-contents">
-    <%= f.label :lead, "リード文", class:"output-labels" %>
+    <%= f.label :lead, "投稿タイトル", class:"output-labels" %>
     <%= f.text_field :lead, placeholder: "30文字以内で入力してください" %>
   </div>
   <div class="output-contents output-texts">
