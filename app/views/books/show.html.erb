@@ -22,7 +22,8 @@
       </tr>
       <tr>
         <td>アウトプット</td>
-        <td><%= safe_join(@book.content.split("\n\r"), tag(:br))%></td>
+        <td><%= safe_join(@book.content.split("\r\n"), tag(:br))%></td>
+        <% binding.pry%>
       </tr>
       <tr>
         <td>おすすめ度</td>
