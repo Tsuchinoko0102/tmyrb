@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!, except: :index
 
   def index
+    @user = User.find(current_user.id)
     if user_signed_in?
       @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
     else
