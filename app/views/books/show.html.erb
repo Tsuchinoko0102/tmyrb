@@ -58,7 +58,17 @@
             <%= button_to("戻る", root_path, method: :get)%>
           </li>
         <% else %>
-          <%= button_to("戻る", root_path, method: :get)%>
+          <ul>
+            <li>
+              <%= link_to @book.url, data:{ title: '警告', confirm: '外部サイト（楽天ブックス）に移動しますがよろしいですか？'} do %>
+                <%= button_tag("この本を購入する") %>
+              <% end %>
+            </li>
+            <li>
+              <%= button_to("戻る", root_path, method: :get)%>
+            </li>
+          </ul>
+          
         <% end %>
     </div>
   </div>
