@@ -1,4 +1,4 @@
-<%= render partial:"header"%>
+<%= render partial: "templates/header"%>
 <main>
   <div class="output-wrapper">
     <div class="output-info-container">
@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <td>アウトプット</td>
-        <td><%= safe_join(@book.content.split("\n\r"), tag(:br))%></td>
+        <td><%= safe_join(@book.content.split("\r\n"), tag(:br))%></td>
       </tr>
       <tr>
         <td>おすすめ度</td>
@@ -46,18 +46,30 @@
       <% if @book.user_id == current_user.id %>
         <ul>
           <li>
-            <%= link_to(edit_book_path(id: @book.id)) do%>
-              <%= button_tag("編集")%>
-            <% end %>
+            <%= button_to("編集", edit_book_path(id: @book.id))%>
           </li>
           <li>
             <%= link_to(book_path(id: @book.id), method: :delete,
-                data:{ title: '警告' ,confirm: '本当に削除しますか？', commit: "OK", cancel: "cancel" }) do %>
+                data:{ title: '警告' ,confirm: '本当に削除しますか？'}) do %>
               <%= button_tag("削除")%>
             <% end %>
           </li>
+          <li>
+            <%= button_to("戻る", root_path, method: :get)%>
+          </li>
         <% else %>
-          <%= button_to("戻る", root_path, method: :get)%>
+          <ul>
+            <li>
+              <%= link_to @book.url, target: :_blank, rel: "noopener noreferrer",
+                  data:{ title: '警告', confirm: '外部サイト（楽天ブックス）に移動しますがよろしいですか？'} do %>
+                <%= button_tag("この本を購入する") %>
+              <% end %>
+            </li>
+            <li>
+              <%= button_to("戻る", root_path, method: :get)%>
+            </li>
+          </ul>
+          
         <% end %>
     </div>
   </div>

@@ -1,4 +1,4 @@
-<%= render partial: "header"%>
+<%= render partial: "templates/header"%>
 
 <main>
   <div class="output-wrapper">
@@ -12,7 +12,7 @@
         </p>
         <% end %>
         <% if session["title"].present? && session["author"].present? %>
-          <%= render partial: "forms"%>
+          <%= render partial: "templates/forms"%>
         <% else %>
           <p>書籍のタイトルを選んでください</p>
         <% end %>

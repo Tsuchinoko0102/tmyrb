@@ -1,27 +1,15 @@
-<%= render partial: "books/header"%>
+<%= render partial: "templates/header"%>
 
 <main>
   <div class="main-container">
-    <div class="user-contents">
-      <h2><%= current_user.nickname %></h2>
-      <div class="user-field">
-        <%= image_tag("izumin-sample.jpg", size: "150x120")%>
-      </div>
-      <div class="user-contents">
-        <ul>
-          <li>フォロー / フォロワー</li>
-          <li><%= link_to("プロフィール編集する", edit_user_path(current_user.id)) %></li>
-          <li><%= link_to("Outputする", new_book_path) %></li>
-        </ul>
-      </div>
-      <div>
-        <%= pie_chart(@pie) %>
-      </div>
-    </div>
+    <%# メイン左窓、ユーザー関連情報の一覧 %>
+    <%= render partial: "templates/user_contents"%>
+    <%# メイン中央〜右、投稿情報の一覧 %>
+
     <div class="main-contents">
-      <h2>新着情報</h2> 
+      <h2 class="main-contents-header">投稿一覧</h2> 
       <div class="contents">
-        <div class="my-books">
+        <div class="books">
           <% @books.each do |b| %>
             <%= link_to(book_path(b.id)) do %>
               <div class="book-blocks">
@@ -30,11 +18,11 @@
                 </div>
                 <div class="info-box">
                   <div class="book-info">
-                    <p><%= b.title %></p>
-                    <p><%= b.author %></p>
-                    <p><%= b.lead %><p>
+                    <p>タイトル：<span style="font-size: larger; font-weight: bolder;"><%= b.lead %></span><p>
+                    <p>書籍名　：<%= b.title %></p>
+                    <p>著者名　：<%= b.author %></p>                  
                   </div>
-                  <div class="my-book-timestamp">
+                  <div class="book-timestamp">
                     <p><%= l b.created_at %></p>
                   </div>
                 </div>
