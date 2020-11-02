@@ -36,6 +36,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @hoge = @book.content
+    @pie = User.chart_data(params[:id])
   end
 
   def edit

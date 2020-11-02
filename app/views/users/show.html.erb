@@ -20,7 +20,7 @@
                   <div class="book-info">
                     <p>タイトル：<span style="font-size: larger; font-weight: bolder;"><%= b.lead %></span><p>
                     <p>書籍名　：<%= b.title %></p>
-                    <p>著者名　：<%= b.author %></p>                  
+                    <p>著者名　：<%= b.author %></p>
                   </div>
                   <div class="book-timestamp">
                     <p><%= l b.created_at %></p>
@@ -31,7 +31,10 @@
           <% end %>
         </div>
       </div>
-      
+    </div>
+
+    <div class="chart">
+      <%= pie_chart(@pie)%>
     </div>
   </div>
 </main> 
