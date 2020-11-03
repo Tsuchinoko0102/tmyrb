@@ -33,8 +33,11 @@
       </div>
     </div>
 
-    <div class="chart">
-      <%= pie_chart(@pie)%>
+    <div class="chart-container">
+      <h2 class="chart-container-header"><%= "#{@user.nickname}のジャンル傾向"%></h2>
+      <div class="chart">
+        <%= pie_chart(@pie)%>
+      </div>
     </div>
   </div>
 </main> 

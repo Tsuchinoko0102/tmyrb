@@ -187,6 +187,18 @@ main {
   transform: scale(0.9, 0.9);
 }
 
+.chart-container{
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chart-container-header{
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 .chart{
   display: flex;
   justify-content: center;
