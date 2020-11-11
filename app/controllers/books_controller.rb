@@ -85,6 +85,17 @@ class BooksController < ApplicationController
     redirect_to new_book_path
   end
 
+  def new_pdf
+    @book = Book.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "#{@book.title}"   # Excluding ".pdf" extension.
+      end
+    end
+  end
+
+
   private
   def book_params
     params.require(:book).permit(:title, :author, :genre_id, :content, :rank_id, :publish, :image, :url, :lead).merge(user_id: current_user.id)
