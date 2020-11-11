@@ -64,3 +64,5 @@ gem 'payjp'
 gem 'aws-sdk-s3', require: false
 gem 'rakuten_web_service'
 gem "chartkick"
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
