@@ -42,7 +42,7 @@
       <% end %>
       </table>
       
-      <%# 閲覧者が投稿者と同じIDなら「編集」「削除」ボタンを表示し、異なる場合は「戻る」ボタンを表示する %>
+      <%# 閲覧者が投稿者と同じIDなら「編集」「削除」ボタンを表示する %>
       <% if @book.user_id == current_user.id %>
         <ul>
           <li>
@@ -57,6 +57,10 @@
           <li>
             <%= button_to("戻る", root_path, method: :get)%>
           </li>
+          <li>
+            <%= link_to("PDF出力する", "/books/#{@book.id}/new_pdf.pdf", action: :new_pdf)%>
+          </li>
+      <%# 閲覧者が投稿者と異なる場合は「購入」「戻る」ボタンを表示する %>
         <% else %>
           <ul>
             <li>
@@ -69,7 +73,6 @@
               <%= button_to("戻る", root_path, method: :get)%>
             </li>
           </ul>
-          
         <% end %>
     </div>
   </div>
