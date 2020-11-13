@@ -8,29 +8,28 @@
     <div class="main-contents">
     <h2 class="main-contents-header">投稿一覧</h2> 
     <div class="contents">
-      <div class="books">
-          <% @books.each do |b| %>
-            <%= link_to(book_path(b.id)) do %>
-              <div class="book-blocks">
-                <div class="book-image">
-                  <%= image_tag(b.image, size:"70x90") %>
-                </div>
-                <div class="info-box">
-                  <div class="book-info">
-                    <p>タイトル：<span style="font-size: larger; font-weight: bolder;"><%= b.lead %></span><p>
-                    <p>書籍名　：<%= b.title %></p>
-                    <p>著者名　：<%= b.author %></p>
-                    <%= link_to user_path(id: b.user_id) do %>
-                    <p>投稿者　：<span style="text-decoration: underline; color: purple;"><%= b.user.nickname %></span></p>
-                    <% end %>
-                  </div>
-                  <div class="book-timestamp">
-                    <p><%= l b.created_at %></p>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
+      <div class="tabbed-content clearfix">
+        <!--Tabbed navigation-->
+        <ul class="tabs">
+          <li class="tab-link current" data-tab="text-tab">Text</li>
+          <li class="tab-link" data-tab="video-tab">Video</li>
+          <li class="tab-link" data-tab="audio-tab">Audio</li>
+        </ul>
+        <!--Wrapper to contain interchanging content-->
+        <div class="tabs-wrapper">
+            <!--textual tab content-->
+          <div id="text-tab" class="tab-content current">
+            <%= render partial: "templates/other_books"%>
+          </div> 
+          <!--video tab content-->
+          <div id="video-tab" class="tab-content">
+           <iframe src="#" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <!--audio tab content-->
+          <div id="audio-tab" class="tab-content">
+            <audio src="#" controls preload></audio>
+          </div>
+        </div>
       </div>
     </div>
   </div>
