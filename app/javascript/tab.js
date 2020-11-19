@@ -1,5 +1,5 @@
-var tabbedContent = function() {
-  //get all tab link elements
+const tabbedContent = function() {
+
   var tab = document.getElementsByClassName("tab-link");
   //get all tab content elements
   var tabContent = document.getElementsByClassName("tab-content");
