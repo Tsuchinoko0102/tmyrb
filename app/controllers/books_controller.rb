@@ -5,11 +5,7 @@ class BooksController < ApplicationController
   def index
     if user_signed_in?
       @user = User.find(current_user.id)
-      if params[:content].blank?
-        @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
-      else
-        tabchange
-      end
+      @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
     else
       @books = Book.all.order(created_at: :DESC)
     end
