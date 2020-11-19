@@ -99,14 +99,21 @@ class BooksController < ApplicationController
     end
   end
 
+  # tabchange.jsによるAjaxリクエストのレシーバ
   def tabchange
+    
+    # Ajaxで送信されてきたデータ（タブの表示名）をtab_nameに格納
     tab_name = params[:content]
     @user = User.find(current_user.id)
+    
+    # tab_nameとGenre（activehash）のnameとを照合し、tab_nameが含まれていれば該当するハッシュをtargetに格納
     if target = Genre.data.find{|q| q[:name].include?(tab_name)}
       @books = Book.where.not(user_id: current_user.id).where(genre_id: target[:id]).order(created_at: :DESC)
     else
       @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
     end
+    
+    # このメソッドで定義された@books変数を適用したpartialをtabchange.jsに返却
     render partial: "/templates/other_books", collection: @books, as: :b
   end
 
