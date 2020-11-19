@@ -29,5 +29,5 @@
 
 .contents{
   overflow-y: scroll;
-  height: calc(100% - 100px);
+  height: calc(100% - 90px);
 }
