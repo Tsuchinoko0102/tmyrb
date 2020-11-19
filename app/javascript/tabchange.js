@@ -1,28 +1,23 @@
-function tabchange() {
+function tabchange(){
   const tabs = document.querySelectorAll(".tab-link");
   tabs.forEach(function(tab) {
-    tab.addEventListener('click', () =>{
-      // let tabName = tab.textContent
-      // console.log(tabName);
+    $(tab).click(function(){
       let tabId = tab.getAttribute("data-id")
-      const XHR = new XMLHttpRequest(tabId);
-      XHR.open("GET", `/tab/${tabId}`, true);
-      XHR.responseType = "json";
-      XHR.send();
-      // JSONでのレスポンス受信
-      XHR.onload = () => {
-        // レスポンスのHTTPステータスを解析、該当するエラーメッセージを返す
-        if (XHR.status != 200){
-          alert(`Error ${XHR.status}: ${XHR.statusText}`);
-          return null;
-        } 
-        if (XHR.status == 200){
-          console.log("XHR");
-        }
-      };
-    })
+      $.ajax({
+        url: `/tab/${tabId}`,
+        type: "GET",
+        data: {content : $(tab).text()},
+        datatype: "html",
+        })
+        .done(function(response){
+          $('.other-books').children().remove();
+          $('.other-books').html(response);
+        })
+        .fail(function(){
+          alert('エラーが発生しました');
+        })
+    });
   });
-
 };
 
 window.addEventListener("load", tabchange);
