@@ -11,23 +11,27 @@
       <div class="tabbed-content clearfix">
         <!--Tabbed navigation-->
         <ul class="tabs">
-          <li class="tab-link current" data-tab="text-tab">Text</li>
-          <li class="tab-link" data-tab="video-tab">Video</li>
-          <li class="tab-link" data-tab="audio-tab">Audio</li>
+          <li data-id="1" class="tab-link current" data-tab="text-tab">Text</li>
+          <li data-id="2" class="tab-link" data-tab="video-tab"><%= @user.genre.name %></li>
+          <li data-id="3" class="tab-link" data-tab="audio-tab">Audio</li>
         </ul>
         <!--Wrapper to contain interchanging content-->
         <div class="tabs-wrapper">
             <!--textual tab content-->
           <div id="text-tab" class="tab-content current">
-            <%= render partial: "templates/other_books"%>
+            <div class="other-books">
+              <%= render partial: "templates/other_books", collection: @books, as: :b %>
+            </div>
           </div> 
           <!--video tab content-->
           <div id="video-tab" class="tab-content">
-           <iframe src="#" frameborder="0" allowfullscreen></iframe>
+            <div class="other-books">
+            </div>
           </div>
           <!--audio tab content-->
           <div id="audio-tab" class="tab-content">
-            <audio src="#" controls preload></audio>
+            <div class="other-books">
+            </div>
           </div>
         </div>
       </div>
