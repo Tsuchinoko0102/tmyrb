@@ -37,6 +37,11 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @hoge = @book.content
     @pie = User.chart_data(params[:id])
+   Genre.all.each do |genre|
+    if genre.map{|x| x[:id]}.include?(@book.genre_id)
+      @target = genre.find{|x| x[:name]}.to_h
+    end
+  end
   end
 
   def edit
