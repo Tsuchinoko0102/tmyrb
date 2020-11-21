@@ -13,7 +13,8 @@ class User < ApplicationRecord
     @books = Book.where(user_id: user_id)
     ary = []
     @books.each do |i|
-      ary.push(Genre.find_by(id: i.genre_id)[:name])
+      num = i.genre_id.to_i
+      ary.push(Genre.call(num))
     end
     ary.group_by(&:itself).map{|key, value|[key, value.count]}.to_h
   end
