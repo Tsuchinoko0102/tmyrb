@@ -113,15 +113,17 @@ class BooksController < ApplicationController
     render partial: "/templates/other_books", collection: @books, as: :b
   end
 
-  def genreselect
+  def genre_select
     @genre = params[:num].to_i - 2
     render partial: "templates/genre", locals: {genre: @genre}
   end
 
 
   private
+  # genre_idはform_withと別に、Ajaxでpartialをrenderして拾うのでmergeメソッドによって取得
   def book_params
-    params.require(:book).permit(:title, :author, :genre_id, :content, :rank_id, :publish, :image, :url, :lead).merge(user_id: current_user.id)
+    params.require(:book).permit(:title, :author, :content, :rank_id, :publish, :image, :url, :lead)
+    .merge(user_id: current_user.id, genre_id: params[:genre_id])
   end
 
   
