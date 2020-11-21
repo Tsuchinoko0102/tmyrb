@@ -11,10 +11,10 @@
       <span><%= @set_author %></span>
       <%= f.text_field :author, value: @set_author , hidden: true %>
   </div>
-  <div class="output-contents">
+  <div class="output-contents" id="genre">
     <%= f.label :genre_id, "ジャンル", class:"output-labels" %>
     <%= select_tag("category", options_from_collection_for_select(Category.all, :id, :name)) %>
-    <%= f.select(:genre_id, options_for_select(Genre.call(7).map{ |q| [q[:name], q[:id]] }) )%>
+      
   </div>
   <div class="output-contents">
     <%= f.label :lead, "投稿タイトル", class:"output-labels" %>
