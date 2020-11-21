@@ -114,7 +114,7 @@ class BooksController < ApplicationController
   end
 
   def genreselect
-    @genre = params[:num].to_i - 1
+    @genre = params[:num].to_i - 2
     render partial: "templates/genre", locals: {genre: @genre}
   end
 
