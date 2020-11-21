@@ -13,6 +13,10 @@ function genreChange() {
       .done(function(response){
         // const selectBox = $.parseHTML(response);
         const target = document.getElementById("genre");
+        const removeDiv = document.getElementById("genre_id");
+        if (removeDiv != null) {
+          removeDiv.remove();
+        }
         target.insertAdjacentHTML("beforeend", response);
       })
       // 失敗した場合は、エラーメッセージを表示する
