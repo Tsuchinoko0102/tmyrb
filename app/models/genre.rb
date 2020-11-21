@@ -1,6 +1,5 @@
 class Genre
-  def self.call(num)
-  genre = [
+  @@genre = [
                 [{id: 101, name: "経済・財政"},{id: 102, name: "経営"}, {id: 103, name: "流通"}, {id: 104, name: "マーケティング"},
                 {id: 105, name: "投資・株・資産運用"}, {id: 106, name: "産業"}, {id: 107, name: "マネジメント・人材管理"}, {id: 108, name: "自己啓発"},
                 {id: 109, name: "就職・転職"}, {id: 110, name: "経理"}, {id: 199, name: "その他ビジネス・経済"}],
@@ -48,6 +47,13 @@ class Genre
                 {id: 1104, name: "不動産関係資格"},{id: 1105, name: "福祉関係資格"}, {id: 1106, name: "看護・医療関係資格"},
                 {id: 1107, name: "パソコン関係資格"}, {id: 1108, name: "調理関係資格"}, {id: 1109, name: "教育関係資格"}, {id: 1199, name: "その他資格試験"}]
             ]
-    return genre[num]
+
+  def self.call(num)
+    return @@genre.to_a[num]
   end
+
+  def self.all
+    return @@genre
+  end
+
 end
