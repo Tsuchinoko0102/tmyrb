@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   root to: "books#index"
   resources :users, only: [:index, :show, :edit, :update]
   get 'tab/:id', to: 'books#tabchange'
+  get 'cat/:id', to: 'books#genreselect'
 end

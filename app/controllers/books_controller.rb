@@ -113,6 +113,11 @@ class BooksController < ApplicationController
     render partial: "/templates/other_books", collection: @books, as: :b
   end
 
+  def genreselect
+    @genre = params[:num].to_i - 1
+    render partial: "templates/genre", locals: {genre: @genre}
+  end
+
 
   private
   def book_params
