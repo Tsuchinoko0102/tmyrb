@@ -1,0 +1,1 @@
+<%= select_tag(:genre_id, options_for_select(Genre.call(genre).map{ |q| [q[:name], q[:id]] }) )%>

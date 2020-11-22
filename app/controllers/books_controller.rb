@@ -6,6 +6,7 @@ class BooksController < ApplicationController
     if user_signed_in?
       @user = User.find(current_user.id)
       @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
+      @genre = Genre.target(@user.genre_id)
     else
       @books = Book.all.order(created_at: :DESC)
     end
@@ -37,6 +38,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @hoge = @book.content
     @pie = User.chart_data(params[:id])
+    @genre = Genre.target(@book.genre_id)
   end
 
   def edit
@@ -97,26 +99,33 @@ class BooksController < ApplicationController
 
   # tabchange.jsによるAjaxリクエストのレシーバ
   def tabchange
-    
-    # Ajaxで送信されてきたデータ（タブの表示名）をtab_nameに格納
-    tab_name = params[:content]
+    # Ajaxで送信されてきたデータ（タブの表示名）をtab_idに格納
+    tab_id = params[:content].to_i
     @user = User.find(current_user.id)
-    
-    # tab_nameとGenre（activehash）のnameとを照合し、tab_nameが含まれていれば該当するハッシュをtargetに格納
-    if target = Genre.data.find{|q| q[:name].include?(tab_name)}
-      @books = Book.where.not(user_id: current_user.id).where(genre_id: target[:id]).order(created_at: :DESC)
+    # 送信されてきたtab_idを引数にgenre_targetメソッドを動かし、対象のジャンルを抽出して@books変数に代入
+    Genre.target(tab_id)
+    if @genre.present?
+      @books = Book.where.not(user_id: current_user.id).where(genre_id: @genre[:id]).order(created_at: :DESC)
     else
       @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
     end
-    
+   
     # このメソッドで定義された@books変数を適用したpartialをtabchange.jsに返却
     render partial: "/templates/other_books", collection: @books, as: :b
   end
 
+  # genreselect.jsによるAjaxリクエストのレシーバ
+  def genre_select
+    @genre = params[:num].to_i - 2
+    render partial: "templates/genre", locals: {genre: @genre}
+  end
 
+  
   private
+  # genre_idはform_withと別に、Ajaxでpartialをrenderして拾うのでmergeメソッドによって取得
   def book_params
-    params.require(:book).permit(:title, :author, :genre_id, :content, :rank_id, :publish, :image, :url, :lead).merge(user_id: current_user.id)
+    params.require(:book).permit(:title, :author, :content, :rank_id, :publish, :image, :url, :lead)
+    .merge(user_id: current_user.id, genre_id: params[:genre_id])
   end
 
   

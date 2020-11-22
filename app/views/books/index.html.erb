@@ -11,9 +11,9 @@
       <div class="tabbed-content clearfix">
         <!--Tabbed navigation-->
         <ul class="tabs">
-          <li data-id="1" class="tab-link current" data-tab="text-tab">Text</li>
-          <li data-id="2" class="tab-link" data-tab="video-tab"><%= @user.genre.name %></li>
-          <li data-id="3" class="tab-link" data-tab="audio-tab">Audio</li>
+          <li data-id="1" class="tab-link current" data-tab="text-tab" data-text="9999">すべての投稿</li>
+          <li data-id="2" class="tab-link" data-tab="video-tab" data-text=<%= @genre[:id]%>><%= @genre[:name] %></li>
+          <li data-id="3" class="tab-link" data-tab="audio-tab" data-text="hoge">その他</li>
         </ul>
         <!--Wrapper to contain interchanging content-->
         <div class="tabs-wrapper">

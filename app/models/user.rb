@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_many :books
   belongs_to_active_hash :prefecture
-  belongs_to_active_hash :genre
+  belongs_to_active_hash :category
 
   validates :nickname, presence: true
 
@@ -13,9 +13,11 @@ class User < ApplicationRecord
     @books = Book.where(user_id: user_id)
     ary = []
     @books.each do |i|
-      ary.push(Genre.find_by(id: i.genre_id)[:name])
+      num = i.genre_id.to_i
+      ary.push(Genre.target(num))
     end
-    ary.group_by(&:itself).map{|key, value|[key, value.count]}.to_h
+    ary = ary.group_by(&:itself).map{|key, value|[key, value.count]}.to_h
+    ary = ary.map{|hash, count| [hash[:name], count]}
   end
 
 

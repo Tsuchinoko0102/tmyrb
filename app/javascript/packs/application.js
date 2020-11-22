@@ -12,6 +12,7 @@ require("chartkick")
 require("chart.js")
 require("../tab")
 require("../tabchange")
+require("../genreselect")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

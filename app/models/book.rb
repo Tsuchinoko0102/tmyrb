@@ -2,7 +2,7 @@ class Book < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   belongs_to :user
-  belongs_to_active_hash :genre
+  belongs_to_active_hash :category
   belongs_to_active_hash :rank
 
   with_options presence: true do
