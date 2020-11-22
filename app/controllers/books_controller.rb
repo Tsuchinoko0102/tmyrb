@@ -6,6 +6,7 @@ class BooksController < ApplicationController
     if user_signed_in?
       @user = User.find(current_user.id)
       @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
+      @genre = genre_target(@user.genre_id)
     else
       @books = Book.all.order(created_at: :DESC)
     end
@@ -102,14 +103,12 @@ class BooksController < ApplicationController
     # Ajaxで送信されてきたデータ（タブの表示名）をtab_nameに格納
     tab_name = params[:content]
     @user = User.find(current_user.id)
-    
     # tab_nameとGenre（activehash）のnameとを照合し、tab_nameが含まれていれば該当するハッシュをtargetに格納
     if target = Genre.data.find{|q| q[:name].include?(tab_name)}
       @books = Book.where.not(user_id: current_user.id).where(genre_id: target[:id]).order(created_at: :DESC)
     else
       @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
     end
-    
     # このメソッドで定義された@books変数を適用したpartialをtabchange.jsに返却
     render partial: "/templates/other_books", collection: @books, as: :b
   end
@@ -123,7 +122,9 @@ class BooksController < ApplicationController
   def genre_target(id)
     Genre.all.each do |genre|
       if genre.map{|x| x[:id]}.include?(id)
-        return genre.find{|x| x[:name]}.to_h
+        target = genre.find_all.to_a
+        result = target.find{|y| y[:id] == id}
+        return result  
       end
     end
   end
