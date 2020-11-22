@@ -114,6 +114,7 @@ class BooksController < ApplicationController
     render partial: "/templates/other_books", collection: @books, as: :b
   end
 
+  # genreselect.jsによるAjaxリクエストのレシーバ
   def genre_select
     @genre = params[:num].to_i - 2
     render partial: "templates/genre", locals: {genre: @genre}
@@ -126,7 +127,7 @@ class BooksController < ApplicationController
       end
     end
   end
-  
+
 
 
   private
