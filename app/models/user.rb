@@ -14,9 +14,10 @@ class User < ApplicationRecord
     ary = []
     @books.each do |i|
       num = i.genre_id.to_i
-      ary.push(Genre.call(num))
+      ary.push(Genre.target(num))
     end
-    ary.group_by(&:itself).map{|key, value|[key, value.count]}.to_h
+    ary = ary.group_by(&:itself).map{|key, value|[key, value.count]}.to_h
+    ary = ary.map{|hash, count| [hash[:name], count]}
   end
 
 
