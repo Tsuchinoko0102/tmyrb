@@ -7,7 +7,6 @@ class BooksController < ApplicationController
       @user = User.find(current_user.id)
       @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
       @genre = Genre.target(@user.genre_id)
-      binding.pry
     else
       @books = Book.all.order(created_at: :DESC)
     end
