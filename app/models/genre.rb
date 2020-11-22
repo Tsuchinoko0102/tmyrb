@@ -56,4 +56,13 @@ class Genre
     return @@genre
   end
 
+  def self.target(id)
+    Genre.all.each do |genre|
+      if genre.map{|x| x[:id]}.include?(id)
+        target = genre.find{|y| y[:id] == id}
+        return target
+      end
+    end
+  end
+
 end

@@ -6,7 +6,8 @@ class BooksController < ApplicationController
     if user_signed_in?
       @user = User.find(current_user.id)
       @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
-      genre_target(@user.genre_id)
+      @genre = Genre.target(@user.genre_id)
+      binding.pry
     else
       @books = Book.all.order(created_at: :DESC)
     end
@@ -38,7 +39,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @hoge = @book.content
     @pie = User.chart_data(params[:id])
-    @genre = genre_target(@book.genre_id)
+    @genre = Genre.target(@book.genre_id)
   end
 
   def edit
@@ -103,7 +104,7 @@ class BooksController < ApplicationController
     tab_id = params[:content].to_i
     @user = User.find(current_user.id)
     # 送信されてきたtab_idを引数にgenre_targetメソッドを動かし、対象のジャンルを抽出して@books変数に代入
-    genre_target(tab_id)
+    Genre.target(tab_id)
     if @genre.present?
       @books = Book.where.not(user_id: current_user.id).where(genre_id: @genre[:id]).order(created_at: :DESC)
     else
@@ -120,17 +121,7 @@ class BooksController < ApplicationController
     render partial: "templates/genre", locals: {genre: @genre}
   end
 
-  def genre_target(id)
-    Genre.all.each do |genre|
-      if genre.map{|x| x[:id]}.include?(id)
-        target = genre.find_all.to_a
-        @genre = target.find{|y| y[:id] == id}
-      end
-    end
-  end
-
-
-
+  
   private
   # genre_idはform_withと別に、Ajaxでpartialをrenderして拾うのでmergeメソッドによって取得
   def book_params
