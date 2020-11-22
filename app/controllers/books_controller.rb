@@ -37,11 +37,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @hoge = @book.content
     @pie = User.chart_data(params[:id])
-   Genre.all.each do |genre|
-    if genre.map{|x| x[:id]}.include?(@book.genre_id)
-      @target = genre.find{|x| x[:name]}.to_h
-    end
-  end
+    @target = genre_target(@book.genre_id)
   end
 
   def edit
@@ -122,6 +118,15 @@ class BooksController < ApplicationController
     @genre = params[:num].to_i - 2
     render partial: "templates/genre", locals: {genre: @genre}
   end
+
+  def genre_target(id)
+    Genre.all.each do |genre|
+      if genre.map{|x| x[:id]}.include?(id)
+        return genre.find{|x| x[:name]}.to_h
+      end
+    end
+  end
+  
 
 
   private
