@@ -2,7 +2,7 @@
 
 <div class="registrations-wrapper">
   <div class="registrations-container">
-    <%= f_with(model: @user, url: user_registration_path, local: true) do |f| %>
+    <%= form_with(model: @user, url: user_registration_path, local: true) do |f| %>
       <div class="registrations-fields">
         <div class="regist-main">
           <h2>Sign up</h2>  
