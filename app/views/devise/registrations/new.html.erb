@@ -43,9 +43,9 @@
           <%= f.text_field :works, autofocus: true, autocomplete: "works" %>
         </div>
 
-        <div class="field">
-          <%= f.label :genre_id, class:"regist-fields" %>
-          <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {autofocus: true, autocomplete: "genre"} ) %>
+        <div class="field" id="genre">
+          <%= label_tag :genre_id, "ジャンル", class:"regist-fields" %>
+          <%= select_tag("category", options_from_collection_for_select(Category.all, :id, :name)) %>
         </div>
 
         <div class="field">
