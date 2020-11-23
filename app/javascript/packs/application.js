@@ -11,6 +11,7 @@ require('jquery')
 require("chartkick")
 require("chart.js")
 import '../css/application.scss'
+import '../javascripts/_uikit.js'
 require("../tab")
 require("../tabchange")
 require("../genreselect")
