@@ -21,6 +21,17 @@ function genreChange() {
           removeDiv.remove();
         }
         target.insertAdjacentHTML("beforeend", response);
+        
+        // ユーザー新規登録の時だけ、以下の記述が起動
+        const register = document.getElementsByClassName("genre-field");
+        if (typeof register !== 'undefined') {
+          const regiGenre = register[0].lastChild;
+          regiGenre.removeAttribute("name");
+          const setGenre = document.getElementById("genre_id")
+          setGenre.setAttribute("name", "user[genre_id]")
+        }
+
+        
       })
       // 失敗した場合は、エラーメッセージを表示する
       .fail(function(){
