@@ -17,17 +17,17 @@
       <ul class="sign-btns">
       <% if user_signed_in? %>
         <li class="sign-btns-left">
-          <%= button_to(current_user.nickname, edit_user_registration_path, method: :get) %>
+          <%= button_to(current_user.nickname, edit_user_path(@user.id), method: :get, class: "uk-button uk-button-default") %>
         </li>
         <li class="sign-btns-right">
-          <%= button_to("ログアウト", destroy_user_session_path, method: :delete) %>
+          <%= button_to("ログアウト", destroy_user_session_path, method: :delete, class: "uk-button uk-button-default") %>
         </li>
       <% else %>
         <li class="sign-btns-left">
-          <%= button_to("新規登録", new_user_registration_path, method: :get) %>
+          <%= button_to("新規登録", new_user_registration_path, method: :get, class: "uk-button uk-button-default") %>
         </li>
         <li class="sign-btns-right">
-          <%= button_to("ログイン", new_user_session_path, method: :get) %>
+          <%= button_to("ログイン", new_user_session_path, method: :get, class: "uk-button uk-button-default") %>
         </li>
       <% end %>
       </ul>
