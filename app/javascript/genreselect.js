@@ -7,7 +7,7 @@ function genreChange() {
       let catNum = catTarget[i].value;
     // 取得したcatNumを元にAjaxでgenre_selectアクションへ移行し、HTMLでのレスポンスを要求
       $.ajax({
-        url: `/cat/${Number(catNum)}`,
+        url: `/genres/${Number(catNum)}`,
         type: "GET",
         data: {num: catNum},
         datatype: "html"
