@@ -41,4 +41,4 @@ function genreChange() {
   };
 };
 
-window.addEventListener("load", genreChange);
+window.addEventListener("turbolinks:load", genreChange);
