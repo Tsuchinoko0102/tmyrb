@@ -1,50 +1,49 @@
 <div class="registrations-wrapper">
   <div class="registrations-container">
-    <div class="registrations-fields">
-      <div class="regist-main">
-      <%= form_with(model: @user, url: user_path(id: @user.id)) do |f| %>
-        <%= render "devise/shared/error_messages", resource: @user %>
-          <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
+    <%= form_with(model: @user, url: user_path(id: @user.id)) do |f| %>
+      <div class="registrations-fields">
+        <div class="regist-main">
+          <%= render "devise/shared/error_messages", resource: @user %>
+            <div class="field">
+              <%= f.label :email, class:"regist-fields" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+            <div class="field">
+              <%= f.label :prefecture_id, class:"regist-fields" %>
+              <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {autofocus: true, autocomplete: "prefecture"}) %>
+            </div>
 
-        <div class="regist-sub">
-          <div class="field">
-            <%= f.label :prefecture_id, class:"regist-fields" %>
-            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {autofocus: true, autocomplete: "prefecture"}) %>
-          </div>
+            <div class="field">
+              <%= f.label :works, class:"regist-fields" %>
+              <%= f.text_field :works, autofocus: true, autocomplete: "works" %>
+            </div>
 
-          <div class="field">
-            <%= f.label :works, class:"regist-fields" %>
-            <%= f.text_field :works, autofocus: true, autocomplete: "works" %>
-          </div>
+            <div class="field genre-field" id="genre">
+              <%= f.label :genre_id, "ジャンル", class:"regist-fields" %>
+              <%= select_tag("category", options_from_collection_for_select(Category.all, :id, :name)) %>
+            </div>
 
-          <div class="field">
-            <%= f.label :genre_id, class:"regist-fields" %>
-            <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {autofocus: true, autocomplete: "genre"} ) %>
-          </div>
+            <div class="field">
+              <%= f.label :likes_author, class:"regist-fields" %>
+              <%= f.text_field :likes_author, autofocus: true, autocomplete: "likes_author" %>
+            </div>
 
-          <div class="field">
-            <%= f.label :likes_author, class:"regist-fields" %>
-            <%= f.text_field :likes_author, autofocus: true, autocomplete: "likes_author" %>
-          </div>
+            <div class="field">
+              <%= f.label :likes_book, class:"regist-fields" %>
+              <%= f.text_field :likes_book, autofocus: true, autocomplete: "likes_book" %>
+            </div>
 
-          <div class="field">
-            <%= f.label :likes_book, class:"regist-fields" %>
-            <%= f.text_field :likes_book, autofocus: true, autocomplete: "likes_book" %>
+            <div class="field appeal-field">
+              <%= f.label :appeal_text, class:"regist-fields" %>
+              <%= f.text_area :appeal_text, class:"appeal-text",autofocus: true, autocomplete: "appeal_text" %>
+            </div>
           </div>
-
-          <div class="field appeal-field">
-            <%= f.label :appeal_text, class:"regist-fields" %>
-            <%= f.text_area :appeal_text, class:"appeal-text",autofocus: true, autocomplete: "appeal_text" %>
+          <div class="actions">
+            <%= f.submit "Update" %>
           </div>
         </div>
-    </div>
-    <div class="actions">
-      <%= f.submit "Update" %>
-    </div>
-     <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 
