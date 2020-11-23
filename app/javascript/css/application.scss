@@ -13,5 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
 @import "uikit/dist/css/uikit.css";
 @import "./books.scss";
+@import "./genres.scss";
+@import "./search.css";
+@import "./users.scss";
+@import "./reset.css";
