@@ -28,4 +28,4 @@ function tabchange(){
   });
 };
 
-window.addEventListener("load", tabchange);
+window.addEventListener("turbolinks:load", tabchange);

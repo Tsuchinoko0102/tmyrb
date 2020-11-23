@@ -26,4 +26,4 @@ const tabbedContent = function() {
   }
   }
   
-  window.addEventListener("load", tabbedContent);
+  window.addEventListener("turbolinks:load", tabbedContent);
