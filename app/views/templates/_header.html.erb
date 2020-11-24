@@ -17,7 +17,7 @@
       <ul class="sign-btns">
       <% if user_signed_in? %>
         <li class="sign-btns-left">
-          <%= button_to(current_user.nickname, edit_user_path(@user.id), method: :get, class: "uk-button uk-button-default") %>
+          <%= button_to(current_user.nickname, edit_user_path(current_user.id), method: :get, class: "uk-button uk-button-default") %>
         </li>
         <li class="sign-btns-right">
           <%= button_to("ログアウト", destroy_user_session_path, method: :delete, class: "uk-button uk-button-default") %>

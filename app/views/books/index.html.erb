@@ -10,31 +10,20 @@
     <div class="contents">
     <% if user_signed_in? %>
       <div class="tabbed-content clearfix">
-        <!--Tabbed navigation-->
-        <ul class="tabs">
-          <li data-id="1" class="tab-link current" data-tab="text-tab" data-text="9999">すべての投稿</li>
-          <li data-id="2" class="tab-link" data-tab="video-tab" data-text=<%= @genre[:id]%>><%= @genre[:name] %></li>
-          <li data-id="3" class="tab-link" data-tab="audio-tab" data-text="hoge">その他</li>
+        <ul uk-tab uk-switcher>
+          <li class="tab-links" data-id="1" data-text="9999"><a href="#">すべての投稿</a></li>
+          <li class="tab-links" data-id="2" data-text=<%= @genre[:id]%>><a href="#"><%= @genre[:name] %></a></li>
+          <li class="tab-links" data-id="3" data-text="hoge"><a href="#">その他</a></li>
         </ul>
-        <!--Wrapper to contain interchanging content-->
-        <div class="tabs-wrapper">
-            <!--textual tab content-->
-          <div id="text-tab" class="tab-content current">
-            <div class="other-books">
-              <%= render partial: "templates/other_books", collection: @books, as: :b %>
-            </div>
-          </div> 
-          <!--video tab content-->
-          <div id="video-tab" class="tab-content">
-            <div class="other-books">
-            </div>
-          </div>
-          <!--audio tab content-->
-          <div id="audio-tab" class="tab-content">
-            <div class="other-books">
-            </div>
-          </div>
-        </div>
+        <ul class="uk-switcher">
+          <li class="other-books">
+            <%= render partial: "templates/other_books", collection: @books, as: :b %>
+          </li>
+          <li class="other-books">
+          </li>
+          <li class="other-books">
+          </li>
+        </ul>
       </div>
     <% end %>
     </div>

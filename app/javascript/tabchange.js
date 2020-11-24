@@ -1,6 +1,6 @@
 function tabchange(){
   // イベント発火対象をtabs変数に規定
-  const tabs = document.querySelectorAll(".tab-link");
+  const tabs = document.querySelectorAll(".tab-links");
   // tabsのいずれかがclickされた際に、Ajax通信発生
   tabs.forEach(function(tab) {
     $(tab).click(function(){
