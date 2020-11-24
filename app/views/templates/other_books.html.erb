@@ -1,0 +1,20 @@
+<%= link_to(book_path(b.id)) do %>
+  <div class="book-blocks other-book-block">
+    <div class="book-image">
+      <%= image_tag(b.image, size:"70x90") %>
+    </div>
+    <div class="info-box">
+      <div class="book-info">
+        <p>タイトル：<span style="font-size: larger; font-weight: bolder;"><%= b.lead %></span><p>
+        <p>書籍名　：<%= b.title %></p>
+        <p>著者名　：<%= b.author %></p>
+        <%= link_to user_path(id: b.user_id) do %>
+        <p>投稿者　：<span style="text-decoration: underline; color: purple;"><%= b.user.nickname %></span></p>
+        <% end %>
+      </div>
+      <div class="book-timestamp">
+        <p><%= l b.created_at %></p>
+      </div>
+    </div>
+  </div>
+<% end %>

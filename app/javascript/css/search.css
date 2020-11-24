@@ -1,7 +1,7 @@
-.search-wrapper{
+.search-wrapper {
   width: 100%;
 }
-.search-results{
+.search-results {
   height: 440px;
   margin: 0 auto;
   overflow-y: scroll;
@@ -18,16 +18,16 @@
   border: 1px solid black;
 }
 
-.radio{
+.radio {
   display: inline-block;
   margin: auto 10px;
 }
 
-.book-image{
+.book-image {
   margin-right: 7px;
 }
 
-.contents{
-  overflow-y: scroll;
+.contents {
+  /* overflow-y: scroll; */
   height: calc(100% - 90px);
 }
