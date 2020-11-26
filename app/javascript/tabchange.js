@@ -17,8 +17,8 @@ function tabchange(){
         })
         // 成功した場合は、元のother-booksを削除して、AjaxのresponseをHTML要素として描画
         .done(function(response){
-          $('.other-books').children().remove();
-          $('.other-books').html(response);
+          $('.other-books-grid').children().remove();
+          $('.other-books-grid').html(response);
         })
         // 失敗した場合は、エラーメッセージを表示する
         .fail(function(){

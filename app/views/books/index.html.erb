@@ -2,30 +2,33 @@
 
 <main>
   <div class="main-container">
-    <% if user_signed_in? %>
-      <%= render partial: "templates/user_contents"%>
-    <% end %>
     <div class="main-contents">
-    <h2 class="main-contents-header">投稿一覧</h2> 
-    <div class="contents">
-    <% if user_signed_in? %>
-      <div class="tabbed-content clearfix">
-        <ul uk-tab uk-switcher>
-          <li class="tab-links" data-id="1" data-text="9999"><a href="#">すべての投稿</a></li>
-          <li class="tab-links" data-id="2" data-text=<%= @genre[:id]%>><a href="#"><%= @genre[:name] %></a></li>
-          <li class="tab-links" data-id="3" data-text="hoge"><a href="#">その他</a></li>
-        </ul>
-        <ul class="uk-switcher">
-          <li class="other-books">
-            <%= render partial: "templates/other_books", collection: @books, as: :b %>
-          </li>
-          <li class="other-books">
-          </li>
-          <li class="other-books">
-          </li>
-        </ul>
+      <h2 class="main-contents-header">投稿一覧</h2> 
+      <div class="contents">
+        <% if user_signed_in? %>
+          <div class="tabbed-content clearfix">
+            <ul class="uk-child-width-expand" uk-tab uk-switcher>
+              <li class="tab-links" data-id="1" data-text="9999"><a href="#">すべての投稿</a></li>
+              <li class="tab-links" data-id="2" data-text=<%= @genre[:id]%>><a href="#"><%= @genre[:name] %></a></li>
+              <li class="tab-links" data-id="3" data-text="hoge"><a href="#">その他</a></li>
+            </ul>
+            <ul class="uk-switcher">
+              <li class="other-books">
+              <div class="uk-child-width-1-4 uk-text-center uk-grid-small other-books-grid" uk-grid>
+                <%= render partial: "templates/other_books", collection: @books, as: :b %>
+              </div>
+              </li>
+              <li class="other-books">
+                <div class="uk-child-width-1-4 uk-text-center uk-grid-small other-books-grid" uk-grid>
+                </div>
+              </li>
+              <li class="other-books">
+                <div class="uk-child-width-1-4 uk-text-center uk-grid-small other-books-grid" uk-grid>
+                </div>
+              </li>
+            </ul>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    </div>
   </div>
 </main> 
