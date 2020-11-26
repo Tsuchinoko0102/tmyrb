@@ -2,6 +2,14 @@
 
 <main>
   <div class="main-container">
+    <div>
+      <span uk-icon="icon: menu" uk-toggle="target: #off-canvas-usage"></span>
+      <div id="off-canvas-usage" uk-offcanvas>
+        <div class="uk-offcanvas-bar">
+          <%= render partial: "templates/user_contents"%>
+        </div>
+      </div>
+    </div>
     <div class="main-contents">
       <h2 class="main-contents-header">投稿一覧</h2> 
       <div class="contents">
