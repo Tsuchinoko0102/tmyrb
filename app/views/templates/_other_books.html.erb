@@ -1,10 +1,10 @@
 <div>
-  <div class="uk-card uk-card-default">
+  <div class="uk-card uk-card-default uk-padding-small">
     <%= link_to(book_path(b.id)) do %>
       <div class="uk-card-media-top">
         <%= image_tag(b.image) %>
       </div>
-      <div class="uk-card-body fonts">
+      <div class="uk-card-body  fonts">
         <h3 class="uk-card-title"><%= b.lead %></h3>
         <%= link_to user_path(id: b.user_id) do %>
           <p>投稿者：<span style="text-decoration: underline; color: purple;"><%= b.user.nickname %></span></p>
