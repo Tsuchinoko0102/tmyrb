@@ -11,8 +11,12 @@ header {
 }
 
 main {
-  background-color: rgb(223, 198, 169);
   height: calc(100vh - 100px);
+}
+
+.main-wrapper {
+  background-color: rgb(223, 198, 169);
+  height: 100%;
 }
 
 .main-contents-header {
@@ -62,7 +66,7 @@ main {
 .main-container {
   display: flex;
   justify-content: center;
-  height: calc(100vh - 100px);
+  // height: calc(100vh - 100px);
   width: 100%;
 }
 
@@ -90,7 +94,8 @@ main {
 
 .output-wrapper {
   width: 100%;
-  height: calc(100vh - 100px);
+  background-color: rgb(223, 198, 169);
+  // height: calc(100vh - 100px);
   // display: flex;
   // justify-content: center;
 }
