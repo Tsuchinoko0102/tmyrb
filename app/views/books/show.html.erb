@@ -1,54 +1,51 @@
 <%= render partial: "templates/header"%>
 <main>
   <div class="output-wrapper">
-    <div class="output-info-container">
-      <h2>書籍情報</h2>
-      <table>
-      <tr>
-        <td>タイトル</td>
-        <td><%= @book.title%></td>
-      </tr>
-      <tr>
-        <td>著者</td>
-        <td><%= @book.author%></td>
-      </tr>
-      <tr>
-        <td>ジャンル</td>
-        <td><%= @genre[:name]%></td>
-      </tr>
-      <tr>
-        <td>リード文</td>
-        <td><%= @book.lead%></td>
-      </tr>
-      <tr>
-        <td>アウトプット</td>
-        <td><%= safe_join(@book.content.split("\r\n"), tag(:br))%></td>
-      </tr>
-      <tr>
-        <td>おすすめ度</td>
-        <td><%= @book.rank.name%></td>
-      </tr>
-      <% if @book.user_id == current_user.id %>
-      <tr>
-      <%# 閲覧者が投稿者と同じIDなら「公開設定」が表示され、異なる場合は「投稿者名」が表示される %>
-        <td>公開設定</td>
-        <td><%= @book.publish%></td>
-      </tr>
-      <% else %>
-      <tr>
-        <td>投稿者名</td>
-        <td><%= @book.user.nickname%></td>
-      </tr>
-      <% end %>
-      </table>
-      
+    <div class="output-container uk-card uk-card-default uk-card-body">
+      <div class="output-info-box">
+        <div class="output-image">
+          <%= image_tag(@book.image)%>
+          <span class="uk-badge"><%= @genre[:name]%></span>
+        </div>
+        <div class="output-infomations">
+          <h2 class="uk-card-title"><%= @book.lead%></h2>
+          <table>
+            <tr>
+              <td>書籍名:</td>
+              <td><%= @book.title%></td>
+            </tr>
+            <tr>
+              <td>著者:</td>
+              <td><%= @book.author%></td>
+            </tr>
+          <%# 閲覧者が投稿者と同じIDなら「公開設定」が表示され、異なる場合は「投稿者名」が表示される %>
+          <% if @book.user_id == current_user.id %>
+            <tr>
+              <td>公開設定:</td>
+              <td><%= @book.publish%></td>
+            </tr>
+          <% else %>
+            <tr>
+              <td>投稿者:</td>
+              <td><%= @book.user.nickname%></td>
+            </tr>
+          <% end %>
+          </table>
+        </div>
+      </div>
+      <div class="output-main-box">
+        <%= safe_join(@book.content.split("\r\n"), tag(:br))%>
+      </div>
+    </div>
+
+    <div class="output-btns-box">
       <%# 閲覧者が投稿者と同じIDなら「編集」「削除」ボタンを表示する %>
       <% if @book.user_id == current_user.id %>
         <ul>
-          <li>
+          <li class="output-btn-marset">
             <%= button_to("編集", edit_book_path(id: @book.id))%>
           </li>
-          <li>
+          <li class="output-btn-marset">
             <%= link_to(book_path(id: @book.id), method: :delete,
                 data:{ title: '警告' ,confirm: '本当に削除しますか？'}) do %>
               <%= button_tag("削除")%>
@@ -60,20 +57,21 @@
           <li>
             <%= link_to("PDF出力する", "/books/#{@book.id}/new_pdf.pdf", action: :new_pdf)%>
           </li>
+        </ul>
       <%# 閲覧者が投稿者と異なる場合は「購入」「戻る」ボタンを表示する %>
-        <% else %>
-          <ul>
-            <li>
-              <%= link_to @book.url, target: :_blank, rel: "noopener noreferrer",
-                  data:{ title: '警告', confirm: '外部サイト（楽天ブックス）に移動しますがよろしいですか？'} do %>
-                <%= button_tag("この本を購入する") %>
-              <% end %>
-            </li>
-            <li>
-              <%= button_to("戻る", root_path, method: :get)%>
-            </li>
-          </ul>
-        <% end %>
+      <% else %>
+        <ul>
+          <li class="output-btn-marset">
+            <%= link_to @book.url, target: :_blank, rel: "noopener noreferrer",
+                data:{ title: '警告', confirm: '外部サイト（楽天ブックス）に移動しますがよろしいですか？'} do %>
+              <%= button_tag("この本を購入する") %>
+            <% end %>
+          </li>
+          <li>
+            <%= button_to("戻る", root_path, method: :get)%>
+          </li>
+        </ul>
+      <% end %>
     </div>
   </div>
 </main>
