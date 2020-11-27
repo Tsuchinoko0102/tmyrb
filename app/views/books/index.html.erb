@@ -3,7 +3,7 @@
 <main>
   <div class="main-container">
     <div>
-      <span uk-icon="icon: menu" uk-toggle="target: #off-canvas-usage"></span>
+      <span uk-icon="icon: menu; ratio: 2" uk-toggle="target: #off-canvas-usage" ></span>
       <div id="off-canvas-usage" uk-offcanvas>
         <div class="uk-offcanvas-bar">
           <%= render partial: "templates/user_contents"%>
@@ -16,9 +16,9 @@
         <% if user_signed_in? %>
           <div class="tabbed-content clearfix">
             <ul class="uk-child-width-expand" uk-tab uk-switcher>
-              <li class="tab-links" data-id="1" data-text="9999"><a href="#">すべての投稿</a></li>
-              <li class="tab-links" data-id="2" data-text=<%= @genre[:id]%> uk-tooltip="あなたの「好きなジャンル」が一覧表示されます"><a href="#"><%= @genre[:name] %></a></li>
-              <li class="tab-links" data-id="3" data-text="hoge"><a href="#">その他</a></li>
+              <li class="tab-links" data-id="1" data-text="9999" uk-tooltip="あなたの投稿以外がすべて表示されます"><a href="#">すべての投稿</a></li>
+              <li class="tab-links" data-id="2" data-text=<%= @genre[:id]%> uk-tooltip="あなたの「好きなジャンル」の投稿が表示されます"><a href="#"><%= @genre[:name] %></a></li>
+              <li class="tab-links" data-id="3" data-text="0" uk-tooltip="あなたの投稿が表示されます"><a href="#"><%= "#{@user.nickname}の投稿"%></a></li>
             </ul>
             <ul class="uk-switcher">
               <li class="other-books">
