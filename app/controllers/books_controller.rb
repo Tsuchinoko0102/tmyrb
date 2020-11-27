@@ -100,16 +100,21 @@ class BooksController < ApplicationController
   # tabchange.jsによるAjaxリクエストのレシーバ
   def tabchange
     # Ajaxで送信されてきたデータ（タブの表示名）をtab_idに格納
-    tab_id = params[:content].to_i
+    genre_target = params[:content].to_i
     @user = User.find(current_user.id)
-    # 送信されてきたtab_idを引数にgenre_targetメソッドを動かし、対象のジャンルを抽出して@books変数に代入
-    @genre = Genre.target(tab_id)
-    # @genreがHashだった場合は、@genre[:id]をgenre_idとして検索。「すべての投稿」は@genreがAryになるのでelseを返す
-    if @genre.kind_of?(Hash)
-      @books = Book.where.not(user_id: current_user.id).where(genre_id: @genre[:id]).order(created_at: :DESC)
+    if genre_target == 0
+      @books = Book.where(user_id: @user.id).order(created_at: :DESC)
     else
-      @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
+      # 送信されてきたtab_idを引数にgenre_targetメソッドを動かし、対象のジャンルを抽出して@books変数に代入
+      @genre = Genre.target(genre_target)
+      # @genreがHashだった場合は、@genre[:id]をgenre_idとして検索。「すべての投稿」は@genreがAryになるのでelseを返す
+      if @genre.kind_of?(Hash)
+        @books = Book.where.not(user_id: current_user.id).where(genre_id: @genre[:id]).order(created_at: :DESC)
+      else
+        @books = Book.where.not(user_id: current_user.id).order(created_at: :DESC)
+      end
     end
+    
    
     # このメソッドで定義された@books変数を適用したpartialをtabchange.jsに返却
     render partial: "/templates/other_books", collection: @books, as: :b
