@@ -10,22 +10,37 @@
       </div>
       <div class="uk-card-body">
         <h4 class="uk-card-title">名前</h4>
-        <p><%= @user.nickname %></p>
+          <p><%= @user.nickname %></p>
         <h4 class="uk-card-title">都道府県</h4>
-        <p><%= Prefecture.find(@user.prefecture_id).name%></p>
+          <% if @user.prefecture_id.present? %>
+            <p><%= Prefecture.find(@user.prefecture_id).name%></p>
+          <%else%>
+            <p>---</p>
+          <% end %>
         <h4 class="uk-card-title">職業</h4>
-        <p><%= @user.works %></p>
+          <% if @user.works.present? %>
+            <p><%= @user.works %></p>
+          <%else%>
+            <p>---</p>
+          <% end %>
         <h4 class="uk-card-title">好きなジャンル</h4>
-        <% if @genre.kind_of?(Hash) %>
-          <p><%= @genre[:name] %></p>
-        <% else %>
-          <p>---</p>
-        <% end %>
+          <% if @genre.kind_of?(Hash) %>
+            <p><%= @genre[:name] %></p>
+          <% else %>
+            <p>---</p>
+          <% end %>
         <h4 class="uk-card-title">好きな著者</h4>
-        <p><%= @user.likes_author%></p>
+          <% if @user.likes_author.present? %>
+            <p><%= @user.likes_author%></p>
+          <%else%>
+            <p>---</p>
+          <% end %>
         <h4 class="uk-card-title">好きな本</h4>
-        <p><%= @user.likes_book%></p>
-        <p><%=  @user.appeal_text %></p>
+          <% if @user.likes_book.present? %>
+            <p><%= @user.likes_book%></p>
+          <%else%>
+            <p>---</p>
+          <% end %>
       </div>
     </div>
   </div>
