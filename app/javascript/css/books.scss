@@ -262,6 +262,11 @@ main {
 
 .uk-offcanvas-bar {
   background-color: white;
+  color: inherit;
+}
+
+.uk-offcanvas-bar a {
+  color: black;
 }
 
 .uk-badge {
