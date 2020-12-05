@@ -10,6 +10,7 @@
       <li class="user-menu-lists">
         <span uk-icon="user"></span><%= link_to("プロフィール編集する", edit_user_path(@user.id)) %></li>
       <li class="user-menu-lists"><span uk-icon="pencil"></span><%= link_to("Outputする", new_book_path) %></li>
+      <li class="user-menu-lists"><span uk-icon="pencil"></span><%= link_to("プロフィール確認", user_path(@user.id)) %></li>
     </ul>
   </div>
 </div>
