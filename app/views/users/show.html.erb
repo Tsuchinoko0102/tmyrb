@@ -16,7 +16,11 @@
         <h4 class="uk-card-title">職業</h4>
         <p><%= @user.works %></p>
         <h4 class="uk-card-title">好きなジャンル</h4>
-        <p><%= Genre.target(@user.genre_id)[:name]%></p>
+        <% if @genre.kind_of?(Hash) %>
+          <p><%= @genre[:name] %></p>
+        <% else %>
+          <p>---</p>
+        <% end %>
         <h4 class="uk-card-title">好きな著者</h4>
         <p><%= @user.likes_author%></p>
         <h4 class="uk-card-title">好きな本</h4>
