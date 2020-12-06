@@ -10,7 +10,12 @@
       </div>
       <div class="uk-card-body">
         <h4 class="uk-card-title">名前</h4>
+        <% @user.nickname.present?%>
           <p><%= @user.nickname %></p>
+        <% else %>
+          <p>---</p>
+        <%end%>
+      <%# 入力必須ではない項目については、該当データがなければ "---" を出力 %>
         <h4 class="uk-card-title">都道府県</h4>
           <% if @user.prefecture_id.present? %>
             <p><%= Prefecture.find(@user.prefecture_id).name%></p>
@@ -44,13 +49,13 @@
       </div>
     </div>
   </div>
-    <%# メイン中央〜右、投稿情報の一覧 %>
+    <%# メイン中央 投稿情報の一覧 %>
     <div class="main-contents show-contents">
       <div class="uk-child-width-1-3 uk-text-center uk-grid-small other-books-grid" uk-grid>
         <%= render partial: "templates/other_books", collection: @books, as: :b %>
       </div>
     </div>
-
+    <%# メイン右 チャートの出力 %>
     <div class="chart-container">
       <h2 class="chart-container-header"><%= "#{@user.nickname}のジャンル傾向"%></h2>
       <div class="chart">
