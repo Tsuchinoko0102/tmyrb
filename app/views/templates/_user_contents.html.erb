@@ -2,15 +2,26 @@
 <button class="uk-offcanvas-close" type="button" uk-close style="color: #999;"></button>
   <div class="user-info">
     <%= image_tag("izumin-sample.jpg", size: "150x120")%>
-    <p><%= @user.nickname %></p>
+    <%if @user.present?%>
+      <p><%= @user.nickname %></p>
+    <%else%>
+    <p>---</p>
+    <%end%>
   </div>
   <div class="user-menu">
+  <%if @user.present?%>
     <ul>
       <li class="user-menu-lists">フォロー / フォロワー</li>
       <li class="user-menu-lists">
-        <span uk-icon="user"></span><%= link_to("プロフィール編集する", edit_user_path(@user.id)) %></li>
-      <li class="user-menu-lists"><span uk-icon="pencil"></span><%= link_to("Outputする", new_book_path) %></li>
-      <li class="user-menu-lists"><span uk-icon="pencil"></span><%= link_to("プロフィール確認", user_path(@user.id)) %></li>
+        <span uk-icon="user"></span><%= link_to("プロフィール編集する", edit_user_path(@user.id)) %>
+      </li>
+      <li class="user-menu-lists"><span uk-icon="pencil">
+        </span><%= link_to("Outputする", new_book_path) %>
+      </li>
+      <li class="user-menu-lists"><span uk-icon="pencil">
+        </span><%= link_to("プロフィール確認", user_path(@user.id)) %>
+      </li>
     </ul>
+  <%end%>
   </div>
 </div>
