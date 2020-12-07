@@ -2,8 +2,8 @@
 
 <div class="registrations-wrapper">
   <div class="registrations-container">
-    <h2 style="text-align: center;">新規登録</h2>  
-    <%= form_with(model: @user, url: user_registration_path, local: true, class: "uk-form-horizontal uk-position-center") do |f| %>
+    <h2 style="text-align: center; font-size: 1.7em;">新規登録</h2>  
+    <%= form_with(model: @user, url: user_registration_path, local: true, class: "uk-form-horizontal uk-position-center sign-up-form") do |f| %>
       <div class="registrations-fields">
         <%# <div class="regist-main"> %>
           <%= render "devise/shared/error_messages", resource: @user %>
