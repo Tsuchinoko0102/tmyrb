@@ -2,6 +2,7 @@
 
 <main>
   <div class="main-wrapper">
+    <%if user_signed_in?%>
     <div class="main-container">
       <div>
         <span uk-icon="icon: menu; ratio: 2" uk-toggle="target: #off-canvas-usage" ></span>
@@ -39,6 +40,26 @@
             </div>
           <% end %>
         </div>
-    </div>
+      </div>
+    <%else%>
+      <div class="uk-cover-container top-image">
+        <div class="top-image-opacity">
+          <div class="top-box uk-position-center">
+            <h1>Welcome to TmyRB !!</h1><br>
+            <h3>What's TmyRB ?</h3>
+            <p>あなたの読書の記録をサポートします。<br>
+              読んだ本を思うがまま、アウトプットしてください。<br>
+              口コミのように書くことも、自分用に内容をまとめることも自在です。
+            </p>
+            <br>
+            <p>「誰か」がどのような読書をしているか知ることができます。<br>
+              自分以外の「誰か」の読書記録がマイページにフィードされてきます。<br>
+              気になる本があれば、TmyRBから楽天Booksに移動して購入することもできます。
+            </p>
+          </div>
+        </div>
+      </div>
+    <%end%>
+    
   </div>
 </main> 
