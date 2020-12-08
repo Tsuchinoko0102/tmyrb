@@ -12,7 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.integer :genre_id
       t.string :likes_author
       t.string :likes_book
-      t.text :appeal_text
+      
 
       ## Recoverable
       t.string   :reset_password_token
