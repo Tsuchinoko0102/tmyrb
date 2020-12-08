@@ -2,69 +2,66 @@
 
 <div class="registrations-wrapper">
   <div class="registrations-container">
-    <%= form_with(model: @user, url: user_registration_path, local: true) do |f| %>
+    <h2 style="text-align: center; font-size: 1.7em;">新規登録</h2>  
+    <%= form_with(model: @user, url: user_registration_path, local: true, class: "uk-form-horizontal uk-position-center sign-up-form") do |f| %>
       <div class="registrations-fields">
-        <div class="regist-main">
-          <h2>Sign up</h2>  
-          <%= render "devise/shared/error_messages", resource: resource %>
+        <%# <div class="regist-main"> %>
+          <%= render "devise/shared/error_messages", resource: @user %>
           <div class="field">
-            <%= f.label :nickname, class:"regist-fields" %>
-            <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+            <%= f.label :nickname, "ユーザー名（必須）", class:"uk-form-label" %>
+            <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class:"uk-form-controls" %>
           </div>
 
           <div class="field">
-            <%= f.label :email, class:"regist-fields" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.label :email, "メールアドレス（必須）", class:"uk-form-label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"uk-form-controls" %>
           </div>
 
           <div class="field">
-            <%= f.label :password, class:"regist-fields" %>
-            <% if @minimum_password_length %>
-            <br><em class="regist-fields">(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %>
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.label :password, "パスワード（必須）",class:"uk-form-label" %>
+            <%= f.password_field :password, autocomplete: "new-password", class:"uk-form-controls", placeholder: "半角英数で6文字以上" %>
           </div>
 
           <div class="field">
-            <%= f.label :password_confirmation, class:"regist-fields" %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= f.label :password_confirmation,"パスワード（確認用）", class:"uk-form-label" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"uk-form-controls" %>
           </div>
-        </div>
-
-        <div class="regist-sub">
+        <%# </div> %>
           <div class="field">
-            <%= f.label :prefecture_id, class:"regist-fields" %>
-            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {autofocus: true, autocomplete: "prefecture"}) %>
+            <br>
+            <%= label_tag :prefecture_id,"以下、入力必須ではありません", class:"uk-form-label" %>
+            <br>
+          </div>
+        <%# <div class="regist-sub"> %>
+          <div class="field">
+            <%= f.label :prefecture_id,"都道府県", class:"uk-form-label" %>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {autofocus: true, autocomplete: "prefecture", class:"uk-form-controls"}) %>
           </div>
 
           <div class="field">
-            <%= f.label :works, class:"regist-fields" %>
-            <%= f.text_field :works, autofocus: true, autocomplete: "works" %>
+            <%= f.label :works, "職業", class:"uk-form-label" %>
+            <%= f.text_field :works, autofocus: true, autocomplete: "works", class:"uk-form-controls" %>
           </div>
 
           <div class="field genre-field" id="genre">
-            <%= f.label :genre_id, "ジャンル", class:"regist-fields" %>
-            <%= select_tag("category", options_from_collection_for_select(Category.all, :id, :name)) %>
+            <%= f.label :genre_id, "好きなジャンル", class:"uk-form-label" %>
+            <%= select_tag("category", options_from_collection_for_select(Category.all, :id, :name), class:"uk-form-controls") %>
           </div>
 
           <div class="field">
-            <%= f.label :likes_author, class:"regist-fields" %>
-            <%= f.text_field :likes_author, autofocus: true, autocomplete: "likes_author" %>
+            <%= f.label :likes_author, "好きな著者・作家", class:"uk-form-label" %>
+            <%= f.text_field :likes_author, autofocus: true, autocomplete: "likes_author", class:"uk-form-controls" %>
           </div>
 
           <div class="field">
-            <%= f.label :likes_book, class:"regist-fields" %>
-            <%= f.text_field :likes_book, autofocus: true, autocomplete: "likes_book" %>
+            <%= f.label :likes_book,"好きな本", class:"uk-form-label" %>
+            <%= f.text_field :likes_book, autofocus: true, autocomplete: "likes_book", class:"uk-form-controls" %>
           </div>
 
-          <div class="field appeal-field">
-            <%= f.label :appeal_text, class:"regist-fields" %>
-            <%= f.text_area :appeal_text, class:"appeal-text",autofocus: true, autocomplete: "appeal_text" %>
-          </div>
         </div>
-      </div>
-      <div class="actions">
-        <%= f.submit "Sign up" %>
+      <%# </div> %>
+      <div class="sign-up-btn">
+        <%= f.submit "登録する" %>
       </div>
     <% end %>
   </div>

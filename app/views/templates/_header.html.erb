@@ -2,7 +2,7 @@
   <div class="header-container">
     <div class="header-left">
     <%= link_to root_path do%>
-      <h1 class="app-name" style="font-family: 'Nothing You Could Do', cursive; font-size: 48px">TmyRB</h1>
+      <h1 class="app-name uk-link-reset" style="font-family: 'Nothing You Could Do', cursive; font-size: 48px">TmyRB</h1>
     <% end %>
       <%# <div class="header-contents">
         <form>
@@ -17,17 +17,17 @@
       <ul class="sign-btns">
       <% if user_signed_in? %>
         <li class="sign-btns-left">
-          <%= button_to(current_user.nickname, edit_user_registration_path, method: :get) %>
+          <%= button_to(current_user.nickname, edit_user_path(current_user.id), method: :get, class: "uk-button uk-button-default", style: "color:white") %>
         </li>
         <li class="sign-btns-right">
-          <%= button_to("ログアウト", destroy_user_session_path, method: :delete) %>
+          <%= button_to("ログアウト", destroy_user_session_path, method: :delete, class: "uk-button uk-button-default", style: "color:white") %>
         </li>
       <% else %>
         <li class="sign-btns-left">
-          <%= button_to("新規登録", new_user_registration_path, method: :get) %>
+          <%= button_to("新規登録", new_user_registration_path, method: :get, class: "uk-button uk-button-default", style: "color:white") %>
         </li>
         <li class="sign-btns-right">
-          <%= button_to("ログイン", new_user_session_path, method: :get) %>
+          <%= button_to("ログイン", new_user_session_path, method: :get, class: "uk-button uk-button-default", style: "color:white") %>
         </li>
       <% end %>
       </ul>

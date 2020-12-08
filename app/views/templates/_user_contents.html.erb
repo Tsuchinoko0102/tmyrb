@@ -1,20 +1,27 @@
 <div class="user-contents">
+<button class="uk-offcanvas-close" type="button" uk-close style="color: #999;"></button>
   <div class="user-info">
     <%= image_tag("izumin-sample.jpg", size: "150x120")%>
-    <p><%= @user.nickname %></p>
+    <%if @user.present?%>
+      <p><%= @user.nickname %></p>
+    <%else%>
+    <p>---</p>
+    <%end%>
   </div>
   <div class="user-menu">
+  <%if @user.present?%>
     <ul>
       <li class="user-menu-lists">フォロー / フォロワー</li>
-      <li class="user-menu-lists"><%= link_to("プロフィール編集する", edit_user_path(@user.id)) %></li>
-      <li class="user-menu-lists"><%= link_to("Outputする", new_book_path) %></li>
-      
-      <%# 現在地が「トップページなら投稿一覧ページに遷移」「投稿一覧ページならトップページに遷移」を分岐 %>
-      <% if current_page?(root_path)%>
-        <li class="user-menu-lists"><%= link_to("自分の投稿を確認する", user_path(@user.id)) %></li>
-      <% elsif current_page?(user_path(@user.id))%>
-        <li class="user-menu-lists"><%= link_to("トップページに戻る", root_path) %></li>
-      <% end %>
+      <li class="user-menu-lists">
+        <span uk-icon="user"></span><%= link_to("プロフィール編集する", edit_user_path(@user.id)) %>
+      </li>
+      <li class="user-menu-lists"><span uk-icon="pencil">
+        </span><%= link_to("Outputする", new_book_path) %>
+      </li>
+      <li class="user-menu-lists"><span uk-icon="database">
+        </span><%= link_to("プロフィール確認", user_path(@user.id)) %>
+      </li>
     </ul>
+  <%end%>
   </div>
 </div>

@@ -1,0 +1,330 @@
+body {
+  height: 100vh;
+}
+
+header {
+  height: 100px;
+  background-image: url("../images/Melamine-wood-005.png");
+  background-size: contain;
+  background-color: rgba(255, 255, 255, 0.3);
+  background-blend-mode: lighten;
+}
+
+main {
+  height: calc(100vh - 100px);
+}
+
+.main-wrapper {
+  background-color: rgb(223, 198, 169);
+  height: 100%;
+}
+
+.main-contents-header {
+  padding-top: 15px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.header-container {
+  width: 80%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+.app-name {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.header-left:hover {
+  text-decoration: none;
+}
+
+.header-contents {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sign-btns {
+  list-style: none;
+  display: flex;
+}
+
+.sign-btns-left {
+  margin-right: 10px;
+  background-color: #441313bd;
+}
+
+.sign-btns-right {
+  background-color: #441313bd;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  // height: calc(100vh - 100px);
+  width: 100%;
+}
+
+.user-menu-lists {
+  padding: 5px 0;
+}
+
+.user-contents {
+  width: 300px;
+  background-color: bisque;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.user-info {
+  padding: 15px 0;
+}
+
+.main-contents {
+  width: 90%;
+  // background-image: url("../images/notebook.png");
+  // background-size: cover;
+  // background-color: #f0e6d3;
+}
+
+.output-wrapper {
+  width: 100%;
+  background-color: rgb(223, 198, 169);
+  // height: calc(100vh - 100px);
+  // display: flex;
+  // justify-content: center;
+}
+
+.output-info-container {
+  padding: 10px;
+}
+
+.output-info-container h2 {
+  text-align: center;
+  font-size: 28px;
+}
+
+.output-contents {
+  margin-bottom: 10px;
+}
+
+.output-contents:first-child {
+  margin-top: 15px;
+}
+
+.output-contents input[type="text"] {
+  width: 300px;
+}
+
+.output-contents select {
+  width: 150px;
+}
+
+.output-labels {
+  display: inline-block;
+  width: 100px;
+  padding: 0 30px 0 0;
+}
+
+.output-text-label {
+  vertical-align: top;
+}
+
+.output-textarea {
+  height: 200px;
+  width: 700px;
+  padding-left: 5px;
+}
+
+.output-submit {
+  text-align: center;
+}
+
+.output-submit-btn {
+  width: 200px;
+  letter-spacing: 3px;
+  font-size: 18px;
+}
+
+.radio {
+  padding-right: 20px;
+}
+
+.registrations-fields {
+  // display: flex;
+  // justify-content: space-around;
+}
+
+.field {
+  margin-bottom: 10px;
+}
+
+.regist-fields {
+  display: inline-block;
+  width: 200px;
+}
+
+.appeal-field {
+  display: flex;
+}
+
+.appeal-text {
+  width: 450px;
+  height: 120px;
+}
+
+.actions {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.book-blocks {
+  padding: 5px;
+}
+
+.info-box {
+  width: 100%;
+}
+
+.book-timestamp {
+  // text-align: right;
+  font-size: 12px;
+}
+
+.books {
+  padding-left: 30px;
+  transform: scale(0.9, 0.9);
+  height: 100%;
+}
+
+.chart-container {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chart-container-header {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.chart {
+  display: flex;
+  justify-content: center;
+}
+
+//wrapping element
+.tabbed-content {
+  overflow-y: scroll;
+  padding-left: 85px;
+  position: relative;
+  margin-top: 25px;
+  overflow: hidden;
+  font-family: arial, "sans-serif";
+  color: #525252;
+}
+
+.book-info {
+  font-size: 14px;
+}
+
+.other-books {
+  padding-left: 30px;
+  transform: scale(0.9, 0.9);
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 20px;
+}
+
+.other-book-block {
+  width: 100% !important;
+}
+
+.uk-switcher {
+  // overflow-y: scroll;
+  height: 440px;
+}
+
+.fonts {
+  font-size: 14px;
+}
+
+.uk-card-body {
+  padding: 0;
+}
+
+.uk-offcanvas-bar {
+  background-color: white;
+  color: inherit;
+}
+
+.uk-offcanvas-bar a {
+  color: black;
+}
+
+.uk-badge {
+  display: block;
+  width: fit-content;
+  margin: 10px 0;
+}
+
+.output-container {
+  height: fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.output-info-box {
+  display: flex;
+}
+
+.output-btns-box {
+  width: fit-content;
+  margin: 10px auto 0;
+}
+
+.output-btns-box ul {
+  display: flex;
+}
+
+.output-btn-marset {
+  margin-right: 10px;
+}
+
+.show-contents {
+  margin: 0 10px;
+  height: 645px;
+  overflow-y: scroll;
+}
+
+.sign-up-btn {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.sign-up-form {
+  margin-top: 20px;
+}
+
+.top-image {
+  height: 100%;
+  background-image: url("../images/book-open.jpg");
+}
+
+.top-image-opacity {
+  background: rgba(255, 255, 255, 0.4);
+  height: 100%;
+}
+
+.top-box {
+  color: #333;
+  font-family: "Hannnari";
+}

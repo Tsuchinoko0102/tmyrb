@@ -1,42 +1,66 @@
 <%= render partial: "templates/header"%>
 
 <main>
-  <div class="main-container">
-    <% if user_signed_in? %>
-      <%= render partial: "templates/user_contents"%>
-    <% end %>
-    <div class="main-contents">
-    <h2 class="main-contents-header">投稿一覧</h2> 
-    <div class="contents">
-    <% if user_signed_in? %>
-      <div class="tabbed-content clearfix">
-        <!--Tabbed navigation-->
-        <ul class="tabs">
-          <li data-id="1" class="tab-link current" data-tab="text-tab" data-text="9999">すべての投稿</li>
-          <li data-id="2" class="tab-link" data-tab="video-tab" data-text=<%= @genre[:id]%>><%= @genre[:name] %></li>
-          <li data-id="3" class="tab-link" data-tab="audio-tab" data-text="hoge">その他</li>
-        </ul>
-        <!--Wrapper to contain interchanging content-->
-        <div class="tabs-wrapper">
-            <!--textual tab content-->
-          <div id="text-tab" class="tab-content current">
-            <div class="other-books">
-              <%= render partial: "templates/other_books", collection: @books, as: :b %>
-            </div>
-          </div> 
-          <!--video tab content-->
-          <div id="video-tab" class="tab-content">
-            <div class="other-books">
-            </div>
-          </div>
-          <!--audio tab content-->
-          <div id="audio-tab" class="tab-content">
-            <div class="other-books">
-            </div>
+  <div class="main-wrapper">
+    <%if user_signed_in?%>
+    <div class="main-container">
+      <div>
+        <span uk-icon="icon: menu; ratio: 2" uk-toggle="target: #off-canvas-usage" ></span>
+        <div id="off-canvas-usage" uk-offcanvas>
+          <div class="uk-offcanvas-bar">
+            <%= render partial: "templates/user_contents"%>
           </div>
         </div>
       </div>
-    <% end %>
-    </div>
+      <div class="main-contents">
+        <h2 class="main-contents-header">投稿一覧</h2> 
+        <div class="contents">
+          <% if user_signed_in? %>
+            <div class="tabbed-content clearfix">
+              <ul class="uk-child-width-expand" uk-tab uk-switcher>
+                <li class="tab-links" data-id="1" data-text="9999" uk-tooltip="あなたの投稿以外がすべて表示されます"><a href="#">すべての投稿</a></li>
+                <li class="tab-links" data-id="2" data-text=<%= @genre[:id]%> uk-tooltip="あなたの「好きなジャンル」の投稿が表示されます"><a href="#"><%= @genre[:name] %></a></li>
+                <li class="tab-links" data-id="3" data-text="0" uk-tooltip="あなたの投稿が表示されます"><a href="#"><%= "#{@user.nickname}の投稿"%></a></li>
+              </ul>
+              <ul class="uk-switcher">
+                <li class="other-books">
+                <div class="uk-child-width-1-4 uk-text-center uk-grid-small other-books-grid" uk-grid>
+                  <%= render partial: "templates/other_books", collection: @books, as: :b %>
+                </div>
+                </li>
+                <li class="other-books">
+                  <div class="uk-child-width-1-4 uk-text-center uk-grid-small other-books-grid" uk-grid>
+                  </div>
+                </li>
+                <li class="other-books">
+                  <div class="uk-child-width-1-4 uk-text-center uk-grid-small other-books-grid" uk-grid>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <%else%>
+      <div class="uk-cover-container top-image">
+        <div class="top-image-opacity">
+          <div class="top-box uk-position-center">
+            <h1>Welcome to TmyRB !!</h1><br>
+            <h3>What's TmyRB ?</h3>
+            <p>あなたの読書の記録をサポートします。<br>
+              あなたが読んだ本を思うがまま、アウトプットしてください。<br>
+              口コミのように書くことも、自分用に内容をまとめることも自在です。
+            </p>
+            <br>
+            <p>「誰か」がどのような読書をしているか知ることができます。<br>
+              自分以外の「誰か」の読書記録がマイページにフィードされてきます。<br>
+              本アプリは、楽天Booksを活用しておりますので<br>
+              気になる本があれば、楽天Booksに移動して購入することもできます。
+            </p>
+          </div>
+        </div>
+      </div>
+    <%end%>
+    
   </div>
 </main> 
