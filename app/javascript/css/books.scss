@@ -313,3 +313,18 @@ main {
 .sign-up-form {
   margin-top: 20px;
 }
+
+.top-image {
+  height: 100%;
+  background-image: url("../images/book-open.jpg");
+}
+
+.top-image-opacity {
+  background: rgba(255, 255, 255, 0.4);
+  height: 100%;
+}
+
+.top-box {
+  color: #333;
+  font-family: "Hannnari";
+}
